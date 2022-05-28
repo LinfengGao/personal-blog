@@ -4,18 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>ZhouzhouBlog</title>
+  <title>数据库系统概论第3章部分例题 | ZhouzhouBlog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="例1为用户WANG定义一个学生-课程模式S-T 1create schema &quot;S-T&quot; authorization WANG  例2为用户WANG定义一个隐含模式名的模式 12create schema authorization WANG--如果没有指定&lt;模式名&gt;，&lt;模式名&gt;隐含为&lt;用户名&gt; 例3为用户ZHANG创建了一个模式TEST，并">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ZhouzhouBlog">
+<meta property="og:title" content="数据库系统概论第3章部分例题">
 <meta property="og:url" content="https://linfenggao.github.io/demo/2022/05/28/sql/index.html">
 <meta property="og:site_name" content="ZhouzhouBlog">
 <meta property="og:description" content="例1为用户WANG定义一个学生-课程模式S-T 1create schema &quot;S-T&quot; authorization WANG  例2为用户WANG定义一个隐含模式名的模式 12create schema authorization WANG--如果没有指定&lt;模式名&gt;，&lt;模式名&gt;隐含为&lt;用户名&gt; 例3为用户ZHANG创建了一个模式TEST，并">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-05-28T05:53:44.556Z">
-<meta property="article:modified_time" content="2022-05-28T05:53:55.587Z">
+<meta property="article:published_time" content="2022-05-27T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-05-28T06:01:22.505Z">
 <meta property="article:author" content="Linfeng">
+<meta property="article:tag" content="学习笔记">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/demo/atom.xml" title="ZhouzhouBlog" type="application/atom+xml">
@@ -76,21 +77,31 @@
         <section id="main"><article id="post-sql" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/demo/2022/05/28/sql/" class="article-date">
-  <time class="dt-published" datetime="2022-05-28T05:53:44.556Z" itemprop="datePublished">2022-05-28</time>
+  <time class="dt-published" datetime="2022-05-27T16:00:00.000Z" itemprop="datePublished">2022-05-28</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      数据库系统概论第3章部分例题
+    </h1>
+  
+
+      </header>
+    
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="例1"><a href="#例1" class="headerlink" title="例1"></a>例1</h1><p><strong>为用户WANG定义一个学生-课程模式S-T</strong></p>
+        <h2 id="例1"><a href="#例1" class="headerlink" title="例1"></a>例1</h2><p><strong>为用户WANG定义一个学生-课程模式S-T</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> schema &quot;S-T&quot; <span class="keyword">authorization</span> WANG</span><br></pre></td></tr></table></figure>
 
-<h1 id="例2"><a href="#例2" class="headerlink" title="例2"></a>例2</h1><p><strong>为用户WANG定义一个隐含模式名的模式</strong></p>
+<h2 id="例2"><a href="#例2" class="headerlink" title="例2"></a>例2</h2><p><strong>为用户WANG定义一个隐含模式名的模式</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> schema <span class="keyword">authorization</span> WANG</span><br><span class="line"><span class="comment">--如果没有指定&lt;模式名&gt;，&lt;模式名&gt;隐含为&lt;用户名&gt;</span></span><br></pre></td></tr></table></figure>
-<h1 id="例3"><a href="#例3" class="headerlink" title="例3"></a>例3</h1><p><strong>为用户ZHANG创建了一个模式TEST，并在其中定义了一个表TAB1，属性定义如下：</strong></p>
+<h2 id="例3"><a href="#例3" class="headerlink" title="例3"></a>例3</h2><p><strong>为用户ZHANG创建了一个模式TEST，并在其中定义了一个表TAB1，属性定义如下：</strong></p>
 <table>
 <thead>
 <tr>
@@ -133,9 +144,9 @@
 <td>a位数字，b位小数</td>
 </tr>
 </tbody></table>
-<h1 id="例4"><a href="#例4" class="headerlink" title="例4"></a>例4</h1><p><strong>删除模式ZHANG同时该模式中定义的表TAB1也被删除</strong></p>
+<h2 id="例4"><a href="#例4" class="headerlink" title="例4"></a>例4</h2><p><strong>删除模式ZHANG同时该模式中定义的表TAB1也被删除</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> schema ZHANG cascade;</span><br></pre></td></tr></table></figure>
-<h1 id="例5"><a href="#例5" class="headerlink" title="例5"></a>例5</h1><p><strong>建立“学生”表Student，学号是主码，姓名取值唯一</strong></p>
+<h2 id="例5"><a href="#例5" class="headerlink" title="例5"></a>例5</h2><p><strong>建立“学生”表Student，学号是主码，姓名取值唯一</strong></p>
 <table>
 <thead>
 <tr>
@@ -155,7 +166,7 @@
 </tr>
 </tbody></table>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> Student(</span><br><span class="line">    Sno <span class="type">char</span>(<span class="number">9</span>) <span class="keyword">primary</span> key,<span class="comment">--列级完整性约束条件</span></span><br><span class="line">    Sname <span class="type">char</span>(<span class="number">20</span>) <span class="keyword">unique</span>,<span class="comment">--姓名取唯一值</span></span><br><span class="line">    Ssex <span class="type">char</span>(<span class="number">2</span>),</span><br><span class="line">    Sage <span class="type">smallint</span>,</span><br><span class="line">    Sdept <span class="type">char</span>(<span class="number">20</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<h1 id="例6"><a href="#例6" class="headerlink" title="例6"></a>例6</h1><p><strong>建立一个“课程”表Course，课程号是主码，先修课是外码，参照课程号</strong></p>
+<h2 id="例6"><a href="#例6" class="headerlink" title="例6"></a>例6</h2><p><strong>建立一个“课程”表Course，课程号是主码，先修课是外码，参照课程号</strong></p>
 <table>
 <thead>
 <tr>
@@ -173,7 +184,7 @@
 </tr>
 </tbody></table>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> Course(</span><br><span class="line">    Cno <span class="type">char</span>(<span class="number">4</span>) <span class="keyword">primary</span> key,</span><br><span class="line">    Cname <span class="type">char</span>(<span class="number">40</span>),</span><br><span class="line">    Cpno <span class="type">char</span>(<span class="number">4</span>),</span><br><span class="line">    Ccredit <span class="type">smallint</span>,</span><br><span class="line">    <span class="keyword">foreign</span> key (cpno) <span class="keyword">references</span> Course(Cno)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<h1 id="例7"><a href="#例7" class="headerlink" title="例7"></a>例7</h1><p><strong>建立一个“学生选课”表SC，主码由学号和课程号构成，学号、课程号是外码，参照表分别是Student,Course</strong></p>
+<h2 id="例7"><a href="#例7" class="headerlink" title="例7"></a>例7</h2><p><strong>建立一个“学生选课”表SC，主码由学号和课程号构成，学号、课程号是外码，参照表分别是Student,Course</strong></p>
 <table>
 <thead>
 <tr>
@@ -189,13 +200,13 @@
 </tr>
 </tbody></table>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> SC(</span><br><span class="line">    Sno <span class="type">char</span>(<span class="number">9</span>)，</span><br><span class="line">    Cno <span class="type">char</span>(<span class="number">4</span>)，</span><br><span class="line">    Grade <span class="type">smallint</span>，</span><br><span class="line">    <span class="keyword">primary</span> key (Sno，Cno)，</span><br><span class="line">    <span class="comment">/* 主码由两个属性构成，必须作为表级完整性进行定义*/</span></span><br><span class="line">    <span class="keyword">foreign</span> key (Sno) <span class="keyword">references</span> Student(Sno)，</span><br><span class="line">    <span class="comment">/* 表级完整性约束条件，Sno是外码，被参照表是Student */</span></span><br><span class="line">    <span class="keyword">foreign</span> key (Cno)  <span class="keyword">references</span> Course(Cno)</span><br><span class="line">    <span class="comment">/* 表级完整性约束条件， Cno是外码，被参照表是Course*/</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<h1 id="例8"><a href="#例8" class="headerlink" title="例8"></a>例8</h1><p><strong>向Student表增加“入学时间”列S_entrance，其数据类型为日期型date</strong></p>
+<h2 id="例8"><a href="#例8" class="headerlink" title="例8"></a>例8</h2><p><strong>向Student表增加“入学时间”列S_entrance，其数据类型为日期型date</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> Student <span class="keyword">add</span> S_entrance <span class="type">date</span>;</span><br></pre></td></tr></table></figure>
-<h1 id="例9"><a href="#例9" class="headerlink" title="例9"></a>例9</h1><p><strong>将Student表中，年龄Sage的数据类型由字符型（假设原来的数据类型是字符型）改为整数（4字节）</strong></p>
+<h2 id="例9"><a href="#例9" class="headerlink" title="例9"></a>例9</h2><p><strong>将Student表中，年龄Sage的数据类型由字符型（假设原来的数据类型是字符型）改为整数（4字节）</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> Student <span class="keyword">alter</span> <span class="keyword">column</span> Sage <span class="type">int</span>;</span><br></pre></td></tr></table></figure>
-<h1 id="例10"><a href="#例10" class="headerlink" title="例10"></a>例10</h1><p><strong>课程表Course增加课程名称Cname必须取唯一值的约束条件</strong></p>
+<h2 id="例10"><a href="#例10" class="headerlink" title="例10"></a>例10</h2><p><strong>课程表Course增加课程名称Cname必须取唯一值的约束条件</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> Course <span class="keyword">add</span> <span class="keyword">unique</span>(Cname);</span><br></pre></td></tr></table></figure>
-<h1 id="例11"><a href="#例11" class="headerlink" title="例11"></a>例11</h1><p><strong>删除Student表</strong></p>
+<h2 id="例11"><a href="#例11" class="headerlink" title="例11"></a>例11</h2><p><strong>删除Student表</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> Student cascade;</span><br></pre></td></tr></table></figure>
 <h1 id="例12"><a href="#例12" class="headerlink" title="例12"></a>例12</h1><p><strong>在Student表上建立视图IS_Student，显示专业为IS的学生的学号、姓名、年龄</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> IS_Student</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">select</span> Sno,Sname,Sage</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sdept<span class="operator">=</span><span class="string">&#x27;IS&#x27;</span>;</span><br></pre></td></tr></table></figure>
@@ -239,21 +250,27 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://linfenggao.github.io/demo/2022/05/28/sql/" data-id="cl3pgk8xn00006su1d1xv235n" data-title="" class="article-share-link">分享</a>
+      <a data-url="https://linfenggao.github.io/demo/2022/05/28/sql/" data-id="cl3pgk8xn00006su1d1xv235n" data-title="数据库系统概论第3章部分例题" class="article-share-link">分享</a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/demo/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-  
-    <a href="/demo/2022/05/28/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">后一篇</strong>
-      <div class="article-nav-title">Hello World</div>
+    <a href="/demo/2022/05/28/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
     </a>
+  
   
 </nav>
 
@@ -269,9 +286,23 @@
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/demo/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/demo/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">学习笔记</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
@@ -290,11 +321,11 @@
       <ul>
         
           <li>
-            <a href="/demo/2022/05/28/sql/">(no title)</a>
+            <a href="/demo/2022/05/28/hello-world/">Hello World</a>
           </li>
         
           <li>
-            <a href="/demo/2022/05/28/hello-world/">Hello World</a>
+            <a href="/demo/2022/05/28/sql/">数据库系统概论第3章部分例题</a>
           </li>
         
       </ul>

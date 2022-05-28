@@ -71,184 +71,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-sql" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/demo/2022/05/28/sql/" class="article-date">
-  <time class="dt-published" datetime="2022-05-28T05:53:44.556Z" itemprop="datePublished">2022-05-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="例1"><a href="#例1" class="headerlink" title="例1"></a>例1</h1><p><strong>为用户WANG定义一个学生-课程模式S-T</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> schema &quot;S-T&quot; <span class="keyword">authorization</span> WANG</span><br></pre></td></tr></table></figure>
-
-<h1 id="例2"><a href="#例2" class="headerlink" title="例2"></a>例2</h1><p><strong>为用户WANG定义一个隐含模式名的模式</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> schema <span class="keyword">authorization</span> WANG</span><br><span class="line"><span class="comment">--如果没有指定&lt;模式名&gt;，&lt;模式名&gt;隐含为&lt;用户名&gt;</span></span><br></pre></td></tr></table></figure>
-<h1 id="例3"><a href="#例3" class="headerlink" title="例3"></a>例3</h1><p><strong>为用户ZHANG创建了一个模式TEST，并在其中定义了一个表TAB1，属性定义如下：</strong></p>
-<table>
-<thead>
-<tr>
-<th>COL1</th>
-<th>COL2</th>
-<th>COL3</th>
-<th>COL4</th>
-<th>COL5</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>2字节整型</td>
-<td>4字节整型</td>
-<td>固定20个字符</td>
-<td>10位数字,小数为2位</td>
-<td>5位数字,小数为2位</td>
-</tr>
-</tbody></table>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> schema TEST <span class="keyword">authorization</span> ZHANG;</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> TAB1(</span><br><span class="line">    COL1 <span class="type">smallint</span>,</span><br><span class="line">    COL2 <span class="type">int</span>,</span><br><span class="line">    COL3 <span class="type">char</span>(<span class="number">20</span>),</span><br><span class="line">    COL4 <span class="type">numeric</span>(<span class="number">10</span>,<span class="number">2</span>),</span><br><span class="line">    COL5 <span class="type">decimal</span>(<span class="number">5</span>,<span class="number">2</span>),</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<p>数据类型说明：</p>
-<table>
-<thead>
-<tr>
-<th>tinyint</th>
-<th>smallint</th>
-<th>int</th>
-<th>bigint</th>
-<th>char(n)</th>
-<th>varchar(n)</th>
-<th>numeric&#x2F;decimal(a,b)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1字节</td>
-<td>2字节</td>
-<td>4字节</td>
-<td>8字节</td>
-<td>固定长n个字符</td>
-<td>可变长n个字符</td>
-<td>a位数字，b位小数</td>
-</tr>
-</tbody></table>
-<h1 id="例4"><a href="#例4" class="headerlink" title="例4"></a>例4</h1><p><strong>删除模式ZHANG同时该模式中定义的表TAB1也被删除</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> schema ZHANG cascade;</span><br></pre></td></tr></table></figure>
-<h1 id="例5"><a href="#例5" class="headerlink" title="例5"></a>例5</h1><p><strong>建立“学生”表Student，学号是主码，姓名取值唯一</strong></p>
-<table>
-<thead>
-<tr>
-<th>Sno</th>
-<th>Sname</th>
-<th>Ssex</th>
-<th>Sage</th>
-<th>Sdept</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>9个字符</td>
-<td>20个字符</td>
-<td>2个字符</td>
-<td>2字节整型</td>
-<td>20个字符</td>
-</tr>
-</tbody></table>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> Student(</span><br><span class="line">    Sno <span class="type">char</span>(<span class="number">9</span>) <span class="keyword">primary</span> key,<span class="comment">--列级完整性约束条件</span></span><br><span class="line">    Sname <span class="type">char</span>(<span class="number">20</span>) <span class="keyword">unique</span>,<span class="comment">--姓名取唯一值</span></span><br><span class="line">    Ssex <span class="type">char</span>(<span class="number">2</span>),</span><br><span class="line">    Sage <span class="type">smallint</span>,</span><br><span class="line">    Sdept <span class="type">char</span>(<span class="number">20</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<h1 id="例6"><a href="#例6" class="headerlink" title="例6"></a>例6</h1><p><strong>建立一个“课程”表Course，课程号是主码，先修课是外码，参照课程号</strong></p>
-<table>
-<thead>
-<tr>
-<th>Cno</th>
-<th>Cname</th>
-<th>Cpno</th>
-<th>Ccredit</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>4个字符</td>
-<td>40个字符</td>
-<td>4个字符</td>
-<td>2字节整型</td>
-</tr>
-</tbody></table>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> Course(</span><br><span class="line">    Cno <span class="type">char</span>(<span class="number">4</span>) <span class="keyword">primary</span> key,</span><br><span class="line">    Cname <span class="type">char</span>(<span class="number">40</span>),</span><br><span class="line">    Cpno <span class="type">char</span>(<span class="number">4</span>),</span><br><span class="line">    Ccredit <span class="type">smallint</span>,</span><br><span class="line">    <span class="keyword">foreign</span> key (cpno) <span class="keyword">references</span> Course(Cno)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<h1 id="例7"><a href="#例7" class="headerlink" title="例7"></a>例7</h1><p><strong>建立一个“学生选课”表SC，主码由学号和课程号构成，学号、课程号是外码，参照表分别是Student,Course</strong></p>
-<table>
-<thead>
-<tr>
-<th>Sno</th>
-<th>Cno</th>
-<th>Grade</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>9个字符</td>
-<td>4个字符</td>
-<td>2字节整型</td>
-</tr>
-</tbody></table>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> SC(</span><br><span class="line">    Sno <span class="type">char</span>(<span class="number">9</span>)，</span><br><span class="line">    Cno <span class="type">char</span>(<span class="number">4</span>)，</span><br><span class="line">    Grade <span class="type">smallint</span>，</span><br><span class="line">    <span class="keyword">primary</span> key (Sno，Cno)，</span><br><span class="line">    <span class="comment">/* 主码由两个属性构成，必须作为表级完整性进行定义*/</span></span><br><span class="line">    <span class="keyword">foreign</span> key (Sno) <span class="keyword">references</span> Student(Sno)，</span><br><span class="line">    <span class="comment">/* 表级完整性约束条件，Sno是外码，被参照表是Student */</span></span><br><span class="line">    <span class="keyword">foreign</span> key (Cno)  <span class="keyword">references</span> Course(Cno)</span><br><span class="line">    <span class="comment">/* 表级完整性约束条件， Cno是外码，被参照表是Course*/</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<h1 id="例8"><a href="#例8" class="headerlink" title="例8"></a>例8</h1><p><strong>向Student表增加“入学时间”列S_entrance，其数据类型为日期型date</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> Student <span class="keyword">add</span> S_entrance <span class="type">date</span>;</span><br></pre></td></tr></table></figure>
-<h1 id="例9"><a href="#例9" class="headerlink" title="例9"></a>例9</h1><p><strong>将Student表中，年龄Sage的数据类型由字符型（假设原来的数据类型是字符型）改为整数（4字节）</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> Student <span class="keyword">alter</span> <span class="keyword">column</span> Sage <span class="type">int</span>;</span><br></pre></td></tr></table></figure>
-<h1 id="例10"><a href="#例10" class="headerlink" title="例10"></a>例10</h1><p><strong>课程表Course增加课程名称Cname必须取唯一值的约束条件</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> Course <span class="keyword">add</span> <span class="keyword">unique</span>(Cname);</span><br></pre></td></tr></table></figure>
-<h1 id="例11"><a href="#例11" class="headerlink" title="例11"></a>例11</h1><p><strong>删除Student表</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> Student cascade;</span><br></pre></td></tr></table></figure>
-<h1 id="例12"><a href="#例12" class="headerlink" title="例12"></a>例12</h1><p><strong>在Student表上建立视图IS_Student，显示专业为IS的学生的学号、姓名、年龄</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> IS_Student</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">select</span> Sno,Sname,Sage</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sdept<span class="operator">=</span><span class="string">&#x27;IS&#x27;</span>;</span><br></pre></td></tr></table></figure>
-<p><strong>restrict方式删除表Student（若表上建有视图，选择restrict时表不能删除）</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> Student restrict;</span><br><span class="line"><span class="comment">--ERROR: cannot drop table Student because other objects depend on it</span></span><br></pre></td></tr></table></figure>
-<p><strong>cascade方式删除表Student（视图也自动被删除）</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> Student cascade;</span><br><span class="line"><span class="comment">--NOTICE: drop cascades to view IS_Student</span></span><br></pre></td></tr></table></figure>
-<h1 id="例13"><a href="#例13" class="headerlink" title="例13"></a>例13</h1><p><strong>为学生-课程数据库中的Student，Course，SC三个表建立索引。<br>Student表按学号升序建唯一索引Stusno，<br>Course表按课程号升序建唯一索引Coucno，<br>SC表按学号升序和课程号降序建唯一索引SCno。</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">unique</span> index Stusno <span class="keyword">on</span> Student(Sno);</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">unique</span> index Coucno <span class="keyword">on</span> Course(Cno);</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">unique</span> index SCno <span class="keyword">on</span> SC(Sno <span class="keyword">asc</span>, Cno <span class="keyword">desc</span>);</span><br></pre></td></tr></table></figure>
-<p>UNIQUE：索引的每一个索引值只对应唯一的记录</p>
-<h1 id="例14"><a href="#例14" class="headerlink" title="例14"></a>例14</h1><p><strong>查询年龄在20~23岁（包括20岁和23岁）之间的学生的姓名、系别和年龄（利用between&#x2F;and）</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Snamem,Sdept,Sage</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sage <span class="keyword">between</span> <span class="number">20</span> <span class="keyword">and</span> <span class="number">23</span>;</span><br><span class="line"><span class="comment">--between and 包含左右端点</span></span><br></pre></td></tr></table></figure>
-<h1 id="例15"><a href="#例15" class="headerlink" title="例15"></a>例15</h1><p><strong>查询所有姓刘学生的姓名、学号和性别</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sname,Sno,Ssex</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sname <span class="keyword">like</span> <span class="string">&#x27;刘%&#x27;</span>；</span><br></pre></td></tr></table></figure>
-<h4 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h4><ol>
-<li>%，指可替代字符串中的<strong>0个或多个字符</strong>。</li>
-<li>_，指可替代字符串中的<strong>1个字符</strong>。</li>
-<li>[字符列表]，指字符列表中的<strong>任一字符相等</strong>即等价。</li>
-<li>[^字符列表]或者[!字符列表]，指<strong>不在字符列表中的任一字符</strong>即等价。</li>
-</ol>
-<h1 id="例16"><a href="#例16" class="headerlink" title="例16"></a>例16</h1><p><strong>查询缺少成绩的学生的学号和相应的课程号</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sno,Cno</span><br><span class="line"><span class="keyword">from</span> SC</span><br><span class="line"><span class="keyword">where</span> Grade <span class="keyword">is</span> <span class="keyword">null</span>;</span><br></pre></td></tr></table></figure>
-<h1 id="例17"><a href="#例17" class="headerlink" title="例17"></a>例17</h1><p><strong>求各个课程号及相应的选课人数</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Cno，<span class="built_in">COUNT</span>(Sno)</span><br><span class="line"><span class="keyword">FROM</span> SC</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> Cno；</span><br></pre></td></tr></table></figure>
-<h1 id="例18"><a href="#例18" class="headerlink" title="例18"></a>例18</h1><p><strong>查询选修了3门以上课程的学生学号</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Sno</span><br><span class="line"><span class="keyword">FROM</span> SC</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> Sno</span><br><span class="line"><span class="keyword">HAVING</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="operator">&gt;</span><span class="number">3</span>；<span class="comment">--统计“分组内的所有元组”数</span></span><br></pre></td></tr></table></figure>
-<h1 id="例19"><a href="#例19" class="headerlink" title="例19"></a>例19</h1><p><strong>查询平均成绩大于等于90的学生学号和平均成绩</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sno,<span class="built_in">avg</span>(Grade)</span><br><span class="line"><span class="keyword">from</span> SC</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> Sno</span><br><span class="line"><span class="keyword">having</span> <span class="built_in">avg</span>(Grade)<span class="operator">&gt;=</span><span class="number">90</span>;</span><br></pre></td></tr></table></figure>
-<p>HAVING短语与WHERE子句的区别：</p>
-<ol>
-<li>作用对象不同</li>
-<li>WHERE子句作用于基表或视图，从中选择满足条件的<strong>元组</strong></li>
-<li>HAVING短语作用于组，从中选择满足条件的<strong>组</strong></li>
-</ol>
-<h1 id="例20"><a href="#例20" class="headerlink" title="例20"></a>例20</h1><p><strong>查询每个学生及其选修课程的情况</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--利用等值连接</span></span><br><span class="line"><span class="keyword">select</span> Student.<span class="operator">*</span>，SC.<span class="operator">*</span> </span><br><span class="line"><span class="keyword">from</span> Student,SC</span><br><span class="line"><span class="keyword">where</span> Student.Sno<span class="operator">=</span>SC.Sno;</span><br><span class="line"><span class="comment">--利用自然连接</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">from</span> Student <span class="keyword">natural</span> <span class="keyword">join</span> SC;</span><br></pre></td></tr></table></figure>
-<h1 id="例21"><a href="#例21" class="headerlink" title="例21"></a>例21</h1><p><strong>查询与“刘晨”在同一个系学习的学生</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> dept <span class="keyword">in</span>(</span><br><span class="line">    <span class="keyword">select</span> dept <span class="keyword">from</span> Student</span><br><span class="line">    <span class="keyword">where</span> Sname<span class="operator">=</span><span class="string">&#x27;刘晨&#x27;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<h1 id="例22"><a href="#例22" class="headerlink" title="例22"></a>例22</h1><p><strong>查询选修了课程名为“信息系统”的学生学号和姓名</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sno,Sname <span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sno <span class="keyword">in</span>(</span><br><span class="line">    <span class="keyword">select</span> Sno <span class="keyword">from</span> SC</span><br><span class="line">    <span class="keyword">where</span> Cno <span class="keyword">in</span>(</span><br><span class="line">        <span class="keyword">select</span> Cno <span class="keyword">in</span> Course</span><br><span class="line">        <span class="keyword">where</span> Cname<span class="operator">=</span><span class="string">&#x27;信息系统&#x27;</span></span><br><span class="line">    )</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://linfenggao.github.io/demo/2022/05/28/sql/" data-id="cl3pgk8xn00006su1d1xv235n" data-title="" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
     <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/demo/2022/05/28/hello-world/" class="article-date">
@@ -300,6 +122,196 @@
 
 
   
+    <article id="post-sql" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/demo/2022/05/28/sql/" class="article-date">
+  <time class="dt-published" datetime="2022-05-27T16:00:00.000Z" itemprop="datePublished">2022-05-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/demo/2022/05/28/sql/">数据库系统概论第3章部分例题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="例1"><a href="#例1" class="headerlink" title="例1"></a>例1</h2><p><strong>为用户WANG定义一个学生-课程模式S-T</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> schema &quot;S-T&quot; <span class="keyword">authorization</span> WANG</span><br></pre></td></tr></table></figure>
+
+<h2 id="例2"><a href="#例2" class="headerlink" title="例2"></a>例2</h2><p><strong>为用户WANG定义一个隐含模式名的模式</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> schema <span class="keyword">authorization</span> WANG</span><br><span class="line"><span class="comment">--如果没有指定&lt;模式名&gt;，&lt;模式名&gt;隐含为&lt;用户名&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="例3"><a href="#例3" class="headerlink" title="例3"></a>例3</h2><p><strong>为用户ZHANG创建了一个模式TEST，并在其中定义了一个表TAB1，属性定义如下：</strong></p>
+<table>
+<thead>
+<tr>
+<th>COL1</th>
+<th>COL2</th>
+<th>COL3</th>
+<th>COL4</th>
+<th>COL5</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2字节整型</td>
+<td>4字节整型</td>
+<td>固定20个字符</td>
+<td>10位数字,小数为2位</td>
+<td>5位数字,小数为2位</td>
+</tr>
+</tbody></table>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> schema TEST <span class="keyword">authorization</span> ZHANG;</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> TAB1(</span><br><span class="line">    COL1 <span class="type">smallint</span>,</span><br><span class="line">    COL2 <span class="type">int</span>,</span><br><span class="line">    COL3 <span class="type">char</span>(<span class="number">20</span>),</span><br><span class="line">    COL4 <span class="type">numeric</span>(<span class="number">10</span>,<span class="number">2</span>),</span><br><span class="line">    COL5 <span class="type">decimal</span>(<span class="number">5</span>,<span class="number">2</span>),</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>数据类型说明：</p>
+<table>
+<thead>
+<tr>
+<th>tinyint</th>
+<th>smallint</th>
+<th>int</th>
+<th>bigint</th>
+<th>char(n)</th>
+<th>varchar(n)</th>
+<th>numeric&#x2F;decimal(a,b)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1字节</td>
+<td>2字节</td>
+<td>4字节</td>
+<td>8字节</td>
+<td>固定长n个字符</td>
+<td>可变长n个字符</td>
+<td>a位数字，b位小数</td>
+</tr>
+</tbody></table>
+<h2 id="例4"><a href="#例4" class="headerlink" title="例4"></a>例4</h2><p><strong>删除模式ZHANG同时该模式中定义的表TAB1也被删除</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> schema ZHANG cascade;</span><br></pre></td></tr></table></figure>
+<h2 id="例5"><a href="#例5" class="headerlink" title="例5"></a>例5</h2><p><strong>建立“学生”表Student，学号是主码，姓名取值唯一</strong></p>
+<table>
+<thead>
+<tr>
+<th>Sno</th>
+<th>Sname</th>
+<th>Ssex</th>
+<th>Sage</th>
+<th>Sdept</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>9个字符</td>
+<td>20个字符</td>
+<td>2个字符</td>
+<td>2字节整型</td>
+<td>20个字符</td>
+</tr>
+</tbody></table>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> Student(</span><br><span class="line">    Sno <span class="type">char</span>(<span class="number">9</span>) <span class="keyword">primary</span> key,<span class="comment">--列级完整性约束条件</span></span><br><span class="line">    Sname <span class="type">char</span>(<span class="number">20</span>) <span class="keyword">unique</span>,<span class="comment">--姓名取唯一值</span></span><br><span class="line">    Ssex <span class="type">char</span>(<span class="number">2</span>),</span><br><span class="line">    Sage <span class="type">smallint</span>,</span><br><span class="line">    Sdept <span class="type">char</span>(<span class="number">20</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="例6"><a href="#例6" class="headerlink" title="例6"></a>例6</h2><p><strong>建立一个“课程”表Course，课程号是主码，先修课是外码，参照课程号</strong></p>
+<table>
+<thead>
+<tr>
+<th>Cno</th>
+<th>Cname</th>
+<th>Cpno</th>
+<th>Ccredit</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>4个字符</td>
+<td>40个字符</td>
+<td>4个字符</td>
+<td>2字节整型</td>
+</tr>
+</tbody></table>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> Course(</span><br><span class="line">    Cno <span class="type">char</span>(<span class="number">4</span>) <span class="keyword">primary</span> key,</span><br><span class="line">    Cname <span class="type">char</span>(<span class="number">40</span>),</span><br><span class="line">    Cpno <span class="type">char</span>(<span class="number">4</span>),</span><br><span class="line">    Ccredit <span class="type">smallint</span>,</span><br><span class="line">    <span class="keyword">foreign</span> key (cpno) <span class="keyword">references</span> Course(Cno)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="例7"><a href="#例7" class="headerlink" title="例7"></a>例7</h2><p><strong>建立一个“学生选课”表SC，主码由学号和课程号构成，学号、课程号是外码，参照表分别是Student,Course</strong></p>
+<table>
+<thead>
+<tr>
+<th>Sno</th>
+<th>Cno</th>
+<th>Grade</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>9个字符</td>
+<td>4个字符</td>
+<td>2字节整型</td>
+</tr>
+</tbody></table>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> SC(</span><br><span class="line">    Sno <span class="type">char</span>(<span class="number">9</span>)，</span><br><span class="line">    Cno <span class="type">char</span>(<span class="number">4</span>)，</span><br><span class="line">    Grade <span class="type">smallint</span>，</span><br><span class="line">    <span class="keyword">primary</span> key (Sno，Cno)，</span><br><span class="line">    <span class="comment">/* 主码由两个属性构成，必须作为表级完整性进行定义*/</span></span><br><span class="line">    <span class="keyword">foreign</span> key (Sno) <span class="keyword">references</span> Student(Sno)，</span><br><span class="line">    <span class="comment">/* 表级完整性约束条件，Sno是外码，被参照表是Student */</span></span><br><span class="line">    <span class="keyword">foreign</span> key (Cno)  <span class="keyword">references</span> Course(Cno)</span><br><span class="line">    <span class="comment">/* 表级完整性约束条件， Cno是外码，被参照表是Course*/</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="例8"><a href="#例8" class="headerlink" title="例8"></a>例8</h2><p><strong>向Student表增加“入学时间”列S_entrance，其数据类型为日期型date</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> Student <span class="keyword">add</span> S_entrance <span class="type">date</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="例9"><a href="#例9" class="headerlink" title="例9"></a>例9</h2><p><strong>将Student表中，年龄Sage的数据类型由字符型（假设原来的数据类型是字符型）改为整数（4字节）</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> Student <span class="keyword">alter</span> <span class="keyword">column</span> Sage <span class="type">int</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="例10"><a href="#例10" class="headerlink" title="例10"></a>例10</h2><p><strong>课程表Course增加课程名称Cname必须取唯一值的约束条件</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> Course <span class="keyword">add</span> <span class="keyword">unique</span>(Cname);</span><br></pre></td></tr></table></figure>
+<h2 id="例11"><a href="#例11" class="headerlink" title="例11"></a>例11</h2><p><strong>删除Student表</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> Student cascade;</span><br></pre></td></tr></table></figure>
+<h1 id="例12"><a href="#例12" class="headerlink" title="例12"></a>例12</h1><p><strong>在Student表上建立视图IS_Student，显示专业为IS的学生的学号、姓名、年龄</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> IS_Student</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">select</span> Sno,Sname,Sage</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sdept<span class="operator">=</span><span class="string">&#x27;IS&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>restrict方式删除表Student（若表上建有视图，选择restrict时表不能删除）</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> Student restrict;</span><br><span class="line"><span class="comment">--ERROR: cannot drop table Student because other objects depend on it</span></span><br></pre></td></tr></table></figure>
+<p><strong>cascade方式删除表Student（视图也自动被删除）</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> Student cascade;</span><br><span class="line"><span class="comment">--NOTICE: drop cascades to view IS_Student</span></span><br></pre></td></tr></table></figure>
+<h1 id="例13"><a href="#例13" class="headerlink" title="例13"></a>例13</h1><p><strong>为学生-课程数据库中的Student，Course，SC三个表建立索引。<br>Student表按学号升序建唯一索引Stusno，<br>Course表按课程号升序建唯一索引Coucno，<br>SC表按学号升序和课程号降序建唯一索引SCno。</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">unique</span> index Stusno <span class="keyword">on</span> Student(Sno);</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">unique</span> index Coucno <span class="keyword">on</span> Course(Cno);</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">unique</span> index SCno <span class="keyword">on</span> SC(Sno <span class="keyword">asc</span>, Cno <span class="keyword">desc</span>);</span><br></pre></td></tr></table></figure>
+<p>UNIQUE：索引的每一个索引值只对应唯一的记录</p>
+<h1 id="例14"><a href="#例14" class="headerlink" title="例14"></a>例14</h1><p><strong>查询年龄在20~23岁（包括20岁和23岁）之间的学生的姓名、系别和年龄（利用between&#x2F;and）</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Snamem,Sdept,Sage</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sage <span class="keyword">between</span> <span class="number">20</span> <span class="keyword">and</span> <span class="number">23</span>;</span><br><span class="line"><span class="comment">--between and 包含左右端点</span></span><br></pre></td></tr></table></figure>
+<h1 id="例15"><a href="#例15" class="headerlink" title="例15"></a>例15</h1><p><strong>查询所有姓刘学生的姓名、学号和性别</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sname,Sno,Ssex</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sname <span class="keyword">like</span> <span class="string">&#x27;刘%&#x27;</span>；</span><br></pre></td></tr></table></figure>
+<h4 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h4><ol>
+<li>%，指可替代字符串中的<strong>0个或多个字符</strong>。</li>
+<li>_，指可替代字符串中的<strong>1个字符</strong>。</li>
+<li>[字符列表]，指字符列表中的<strong>任一字符相等</strong>即等价。</li>
+<li>[^字符列表]或者[!字符列表]，指<strong>不在字符列表中的任一字符</strong>即等价。</li>
+</ol>
+<h1 id="例16"><a href="#例16" class="headerlink" title="例16"></a>例16</h1><p><strong>查询缺少成绩的学生的学号和相应的课程号</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sno,Cno</span><br><span class="line"><span class="keyword">from</span> SC</span><br><span class="line"><span class="keyword">where</span> Grade <span class="keyword">is</span> <span class="keyword">null</span>;</span><br></pre></td></tr></table></figure>
+<h1 id="例17"><a href="#例17" class="headerlink" title="例17"></a>例17</h1><p><strong>求各个课程号及相应的选课人数</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Cno，<span class="built_in">COUNT</span>(Sno)</span><br><span class="line"><span class="keyword">FROM</span> SC</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> Cno；</span><br></pre></td></tr></table></figure>
+<h1 id="例18"><a href="#例18" class="headerlink" title="例18"></a>例18</h1><p><strong>查询选修了3门以上课程的学生学号</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Sno</span><br><span class="line"><span class="keyword">FROM</span> SC</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> Sno</span><br><span class="line"><span class="keyword">HAVING</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="operator">&gt;</span><span class="number">3</span>；<span class="comment">--统计“分组内的所有元组”数</span></span><br></pre></td></tr></table></figure>
+<h1 id="例19"><a href="#例19" class="headerlink" title="例19"></a>例19</h1><p><strong>查询平均成绩大于等于90的学生学号和平均成绩</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sno,<span class="built_in">avg</span>(Grade)</span><br><span class="line"><span class="keyword">from</span> SC</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> Sno</span><br><span class="line"><span class="keyword">having</span> <span class="built_in">avg</span>(Grade)<span class="operator">&gt;=</span><span class="number">90</span>;</span><br></pre></td></tr></table></figure>
+<p>HAVING短语与WHERE子句的区别：</p>
+<ol>
+<li>作用对象不同</li>
+<li>WHERE子句作用于基表或视图，从中选择满足条件的<strong>元组</strong></li>
+<li>HAVING短语作用于组，从中选择满足条件的<strong>组</strong></li>
+</ol>
+<h1 id="例20"><a href="#例20" class="headerlink" title="例20"></a>例20</h1><p><strong>查询每个学生及其选修课程的情况</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--利用等值连接</span></span><br><span class="line"><span class="keyword">select</span> Student.<span class="operator">*</span>，SC.<span class="operator">*</span> </span><br><span class="line"><span class="keyword">from</span> Student,SC</span><br><span class="line"><span class="keyword">where</span> Student.Sno<span class="operator">=</span>SC.Sno;</span><br><span class="line"><span class="comment">--利用自然连接</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">from</span> Student <span class="keyword">natural</span> <span class="keyword">join</span> SC;</span><br></pre></td></tr></table></figure>
+<h1 id="例21"><a href="#例21" class="headerlink" title="例21"></a>例21</h1><p><strong>查询与“刘晨”在同一个系学习的学生</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> dept <span class="keyword">in</span>(</span><br><span class="line">    <span class="keyword">select</span> dept <span class="keyword">from</span> Student</span><br><span class="line">    <span class="keyword">where</span> Sname<span class="operator">=</span><span class="string">&#x27;刘晨&#x27;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h1 id="例22"><a href="#例22" class="headerlink" title="例22"></a>例22</h1><p><strong>查询选修了课程名为“信息系统”的学生学号和姓名</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sno,Sname <span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sno <span class="keyword">in</span>(</span><br><span class="line">    <span class="keyword">select</span> Sno <span class="keyword">from</span> SC</span><br><span class="line">    <span class="keyword">where</span> Cno <span class="keyword">in</span>(</span><br><span class="line">        <span class="keyword">select</span> Cno <span class="keyword">in</span> Course</span><br><span class="line">        <span class="keyword">where</span> Cname<span class="operator">=</span><span class="string">&#x27;信息系统&#x27;</span></span><br><span class="line">    )</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://linfenggao.github.io/demo/2022/05/28/sql/" data-id="cl3pgk8xn00006su1d1xv235n" data-title="数据库系统概论第3章部分例题" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/demo/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
 
 
 </section>
@@ -310,9 +322,23 @@
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/demo/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/demo/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">学习笔记</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
@@ -331,11 +357,11 @@
       <ul>
         
           <li>
-            <a href="/demo/2022/05/28/sql/">(no title)</a>
+            <a href="/demo/2022/05/28/hello-world/">Hello World</a>
           </li>
         
           <li>
-            <a href="/demo/2022/05/28/hello-world/">Hello World</a>
+            <a href="/demo/2022/05/28/sql/">数据库系统概论第3章部分例题</a>
           </li>
         
       </ul>
