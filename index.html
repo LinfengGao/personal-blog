@@ -93,7 +93,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="UDP和TCP"><a href="#UDP和TCP" class="headerlink" title="UDP和TCP"></a>UDP和TCP</h1><h2 id="TCP数据报格式"><a href="#TCP数据报格式" class="headerlink" title="TCP数据报格式"></a>TCP数据报格式</h2><p><img src="/demo/E06_SocketAPI/TCP.png" alt="TCP数据报格式"></p>
+        <h2 id="TCP数据报格式"><a href="#TCP数据报格式" class="headerlink" title="TCP数据报格式"></a>TCP数据报格式</h2><p><img src="/demo/2022/05/28/TCP%E5%92%8CUDP/TCP%E6%95%B0%E6%8D%AE%E6%8A%A5%E6%A0%BC%E5%BC%8F.png" alt="TCP数据报格式"></p>
 <ul>
 <li>确认ACK：占1位，仅<strong>当ACK&#x3D;1时，确认号字段才有效</strong>。ACK&#x3D;0时，确认号无效</li>
 <li>同步SYN：连接建立时用于同步序号。</li>
@@ -102,16 +102,25 @@
 <li>因此，SYN&#x3D;1表示这是一个连接请求，或连接接受报文。SYN这个标志位只有在TCP建立连接时才会被置1，握手完成后SYN标志位被置0。</li>
 <li>终止FIN：用来释放一个连接。FIN&#x3D;1表示：此报文段的发送方的数据已经发送完毕，并要求释放运输连接</li>
 </ul>
-<h2 id="TCP与UDP基本区别"><a href="#TCP与UDP基本区别" class="headerlink" title="TCP与UDP基本区别"></a>TCP与UDP基本区别</h2><p>  1.基于连接与无连接<br>  2.TCP要求系统资源较多，UDP较少；<br>  3.UDP程序结构较简单<br>  4.<strong>流模式（TCP）与数据报模式(UDP); **<br>  5.TCP保证数据正确性、数据顺序，UDP可能丢包<br>  6.TCP三次握手四次挥手，UDP无<br>  <img src="/demo/E06_SocketAPI/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png" alt="TCP三次握手"><br>  （C：我想要数据！S：好的我准备发啦！准备好哦。C：好的谢谢哥哥我准备好啦！）<br>  <img src="/demo/./E06_SocketAPI/TCP%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png" alt="TCP四次挥手"><br>  7.<strong>UDP没有拥塞控制</strong>，因此网络出现拥塞不会使源主机的发送速率降低<br>  8.每一条TCP连接只能是点到点的;UDP</strong>支持一对一，一对多，多对一和多对多的交互通信**</p>
+<h2 id="TCP与UDP基本区别"><a href="#TCP与UDP基本区别" class="headerlink" title="TCP与UDP基本区别"></a>TCP与UDP基本区别</h2><ol>
+<li>基于连接与无连接</li>
+<li>TCP要求系统资源较多，UDP较少</li>
+<li>UDP程序结构较简单 </li>
+<li><strong>流模式（TCP）与数据报模式(UDP)</strong></li>
+<li>TCP保证数据正确性、数据顺序，UDP可能丢包 </li>
+<li>TCP三次握手四次挥手，UDP无<br>  <img src="/demo/2022/05/28/TCP%E5%92%8CUDP/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png" alt="TCP三次握手"><br>  （C：我想要数据！S：好的我准备发啦！准备好哦。C：好的谢谢哥哥我准备好啦！）<br>  <img src="/demo/2022/05/28/TCP%E5%92%8CUDP/TCP%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png" alt="TCP四次挥手"></li>
+<li><strong>UDP没有拥塞控制</strong>，因此网络出现拥塞不会使源主机的发送速率降低</li>
+<li>每一条TCP连接只能是点到点的;UDP<strong>支持一对一，一对多，多对一和多对多的交互通信</strong></li>
+</ol>
 <h2 id="具体编程时的区别"><a href="#具体编程时的区别" class="headerlink" title="具体编程时的区别"></a>具体编程时的区别</h2><p>  1.socket()的参数不同:TCP:SOCK_STREAM;UDP:SOCK_DGRAM<br>  2.UDP Server不需要调用listen和accept<br>  3.UDP收发数据用sendto&#x2F;recvfrom函数<br>  4.TCP：地址信息在connect&#x2F;accept时确定<br>  5.UDP：在sendto&#x2F;recvfrom函数中每次均 需指定地址信息<br>  6.UDP：shutdown函数无效</p>
-<p><img src="/demo/./E06_SocketAPI/TCP%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8C%E5%AE%A2%E6%88%B7%E7%AB%AF.png" alt="TCP服务器和客户端"></p>
+<p><img src="/demo/2022/05/28/TCP%E5%92%8CUDP/TCP%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8C%E5%AE%A2%E6%88%B7%E7%AB%AF.png" alt="TCP服务器和客户端"></p>
 <ul>
 <li><p>TCP编程的服务器端一般步骤是：<br>　　1、创建一个socket，用函数socket()；<br>  　2、设置socket属性，用函数setsockopt();  可选<br>  　3、绑定IP地址、端口等信息到socket上，用函数bind();<br>  　4、开启监听，用函数listen()；<br>  　5、接收客户端上来的连接，用函数accept()；<br>  　6、收发数据，用函数send()和recv()，或者read()和write();<br>  　7、关闭网络连接；<br>  　8、关闭监听； </p>
 </li>
 <li><p>TCP编程的客户端一般步骤是：<br>　　1、创建一个socket，用函数socket()；<br>  　2、设置socket属性，用函数setsockopt();可选<br>  　3、绑定IP地址、端口等信息到socket上，用函数bind();可选<br>  　4、设置要连接的对方的IP地址和端口等属性；<br>  　5、连接服务器，用函数connect()；<br>  　6、收发数据，用函数send()和recv()，或者read()和write();<br>  　7、关闭网络连接；</p>
 </li>
 </ul>
-<p><img src="/demo/./E06_SocketAPI/UDP%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8C%E5%AE%A2%E6%88%B7%E7%AB%AF.png" alt="UDP服务器和客户端"></p>
+<p><img src="/demo/2022/05/28/TCP%E5%92%8CUDP/UDP%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8C%E5%AE%A2%E6%88%B7%E7%AB%AF.png" alt="UDP服务器和客户端"></p>
 <ul>
 <li><p>UDP编程的服务器端一般步骤是：<br>　　1、创建一个socket，用函数socket()；<br>  　　2、设置socket属性，用函数setsockopt();可选<br>  　　3、绑定IP地址、端口等信息到socket上，用函数bind();<br>  　　4、循环接收数据，用函数recvfrom();<br>  　　5、关闭网络连接； </p>
 </li>
