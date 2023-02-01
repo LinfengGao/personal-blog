@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>软工导论期末复习 | 高琳峰的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="第1章 软件和软件工程1.1 软件软件的定义：  指令的集合 数据结构 软件描述信息  软件失效曲线图：  由于变更的副作用导致失效率提高。 1.2 软件危机软件危机：在计算机软件的开发和维护过程中所遇到的一系列严重问题。 软件危机的典型表现：  成本和进度估计常不准确 用户的满意度常不高 质量往往靠不住 软件通常很难维护 文档资料不完整、不合格 软件的成本高，所占比例逐年上升 软件开发生产率提高">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软工导论期末复习">
+<meta property="og:url" content="https://linfenggao.github.io/personal-blog/2023/02/01/%E8%BD%AF%E5%B7%A5%E5%AF%BC%E8%AE%BA%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/index.html">
+<meta property="og:site_name" content="高琳峰的个人博客">
+<meta property="og:description" content="第1章 软件和软件工程1.1 软件软件的定义：  指令的集合 数据结构 软件描述信息  软件失效曲线图：  由于变更的副作用导致失效率提高。 1.2 软件危机软件危机：在计算机软件的开发和维护过程中所遇到的一系列严重问题。 软件危机的典型表现：  成本和进度估计常不准确 用户的满意度常不高 质量往往靠不住 软件通常很难维护 文档资料不完整、不合格 软件的成本高，所占比例逐年上升 软件开发生产率提高">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://linfenggao.github.io/personal-blog/2023/02/01/%E8%BD%AF%E5%B7%A5%E5%AF%BC%E8%AE%BA%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/%E8%BD%AF%E4%BB%B6%E5%A4%B1%E6%95%88%E6%9B%B2%E7%BA%BF%E5%9B%BE.png">
+<meta property="og:image" content="https://linfenggao.github.io/personal-blog/2023/02/01/%E8%BD%AF%E5%B7%A5%E5%AF%BC%E8%AE%BA%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/%E8%BD%AF%E4%BB%B6%E8%BF%87%E7%A8%8B%E6%A1%86%E6%9E%B6.png">
+<meta property="og:image" content="https://linfenggao.github.io/personal-blog/2023/02/01/%E8%BD%AF%E5%B7%A5%E5%AF%BC%E8%AE%BA%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/%E7%80%91%E5%B8%83%E6%A8%A1%E5%9E%8B.png">
+<meta property="og:image" content="https://linfenggao.github.io/personal-blog/2023/02/01/%E8%BD%AF%E5%B7%A5%E5%AF%BC%E8%AE%BA%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/%E5%A2%9E%E9%87%8F%E6%A8%A1%E5%9E%8B.png">
+<meta property="og:image" content="https://linfenggao.github.io/personal-blog/2023/02/01/%E8%BD%AF%E5%B7%A5%E5%AF%BC%E8%AE%BA%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/RAD模型.png">
+<meta property="og:image" content="https://linfenggao.github.io/personal-blog/2023/02/01/%E8%BD%AF%E5%B7%A5%E5%AF%BC%E8%AE%BA%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/原型模型.png">
+<meta property="og:image" content="https://linfenggao.github.io/personal-blog/2023/02/01/%E8%BD%AF%E5%B7%A5%E5%AF%BC%E8%AE%BA%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/%E8%9E%BA%E6%97%8B%E6%A8%A1%E5%9E%8B.png">
+<meta property="og:image" content="https://linfenggao.github.io/personal-blog/2023/02/01/%E8%BD%AF%E5%B7%A5%E5%AF%BC%E8%AE%BA%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/%E7%BB%9F%E4%B8%80%E8%BF%87%E7%A8%8B.png">
+<meta property="og:image" content="https://linfenggao.github.io/personal-blog/2023/02/01/%E8%BD%AF%E5%B7%A5%E5%AF%BC%E8%AE%BA%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91%E5%AE%A3%E8%A8%80.png">
+<meta property="og:image" content="https://linfenggao.github.io/personal-blog/2023/02/01/%E8%BD%AF%E5%B7%A5%E5%AF%BC%E8%AE%BA%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/%E6%9E%81%E9%99%90%E7%BC%96%E7%A8%8B.png">
+<meta property="article:published_time" content="2023-02-01T07:59:07.000Z">
+<meta property="article:modified_time" content="2023-02-01T08:10:01.443Z">
+<meta property="article:author" content="Linfeng">
+<meta property="article:tag" content="软工导论">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://linfenggao.github.io/personal-blog/2023/02/01/%E8%BD%AF%E5%B7%A5%E5%AF%BC%E8%AE%BA%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/%E8%BD%AF%E4%BB%B6%E5%A4%B1%E6%95%88%E6%9B%B2%E7%BA%BF%E5%9B%BE.png">
+  
+    <link rel="alternate" href="/personal-blog/atom.xml" title="高琳峰的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/personal-blog/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/personal-blog/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/personal-blog/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/personal-blog/" id="logo">高琳峰的个人博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/personal-blog/">Home</a>
+        
+          <a class="main-nav-link" href="/personal-blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/personal-blog/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://linfenggao.github.io/personal-blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-软工导论期末复习" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/personal-blog/2023/02/01/%E8%BD%AF%E5%B7%A5%E5%AF%BC%E8%AE%BA%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" class="article-date">
+  <time class="dt-published" datetime="2023-02-01T07:59:07.000Z" itemprop="datePublished">2023-02-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      软工导论期末复习
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="第1章-软件和软件工程"><a href="#第1章-软件和软件工程" class="headerlink" title="第1章 软件和软件工程"></a>第1章 软件和软件工程</h1><h2 id="1-1-软件"><a href="#1-1-软件" class="headerlink" title="1.1 软件"></a>1.1 软件</h2><p>软件的定义：</p>
+<ol>
+<li>指令的集合</li>
+<li>数据结构</li>
+<li>软件描述信息</li>
+</ol>
+<p>软件失效曲线图：</p>
+<p><img src="/personal-blog/2023/02/01/%E8%BD%AF%E5%B7%A5%E5%AF%BC%E8%AE%BA%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/%E8%BD%AF%E4%BB%B6%E5%A4%B1%E6%95%88%E6%9B%B2%E7%BA%BF%E5%9B%BE.png" alt="软件失效图"></p>
+<p>由于变更的副作用导致失效率提高。</p>
+<h2 id="1-2-软件危机"><a href="#1-2-软件危机" class="headerlink" title="1.2 软件危机"></a>1.2 软件危机</h2><p>软件危机：在计算机软件的开发和维护过程中所遇到的一系列严重问题。</p>
+<p>软件危机的典型表现：</p>
+<ol>
+<li>成本和进度估计常不准确</li>
+<li>用户的满意度常不高</li>
+<li>质量往往靠不住</li>
+<li>软件通常很难维护</li>
+<li>文档资料不完整、不合格</li>
+<li>软件的成本高，所占比例逐年上升</li>
+<li>软件开发生产率提高的速度慢</li>
+</ol>
+<p>软件危机的原因：</p>
+<ul>
+<li>客观危机<ol>
+<li>软件缺乏“可见性“，管理和控制其开发过程相对困难</li>
+<li>软件大多规模庞大，而复杂性随规模以指数速度上升</li>
+</ol>
+</li>
+<li>主观危机<ol>
+<li>错误的认识和做法</li>
+</ol>
+</li>
+</ul>
+<p>软件危机的消除：</p>
+<ol>
+<li>应该树立对计算机软件的正确认识</li>
+<li>认识到软件开发不是某种个体劳动的神秘技巧</li>
+<li>推广使用在实践中总结开发出来的开发软件的成功的技术和方法</li>
+<li>应用和开发更好的软件工具</li>
+</ol>
+<h2 id="1-3-软件工程"><a href="#1-3-软件工程" class="headerlink" title="1.3 软件工程"></a>1.3 软件工程</h2><p>IEEE对软件工程的定义：</p>
+<ol>
+<li>将系统化的、严格约束的、可量化的方法应用于软件的开发、运行和维护，即将工程化应用于软件。</li>
+<li>在1中所述方法的研究。</li>
+</ol>
+<h2 id="1-4-软件过程"><a href="#1-4-软件过程" class="headerlink" title="1.4 软件过程"></a>1.4 软件过程</h2><p><strong>软件过程</strong>是工作产品构建时所执行的一系列<strong>活动、动作和任务</strong>的集合。</p>
+<p>过程框架包含5个活动：<strong>沟通、策划、建模、构建、部署</strong>。</p>
+<h1 id="第2章-过程模型"><a href="#第2章-过程模型" class="headerlink" title="第2章 过程模型"></a>第2章 过程模型</h1><h2 id="2-1-过程框架"><a href="#2-1-过程框架" class="headerlink" title="2.1 过程框架"></a>2.1 过程框架</h2><p><img src="/personal-blog/2023/02/01/%E8%BD%AF%E5%B7%A5%E5%AF%BC%E8%AE%BA%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/%E8%BD%AF%E4%BB%B6%E8%BF%87%E7%A8%8B%E6%A1%86%E6%9E%B6.png" alt="软件过程框架"></p>
+<p>过程流：线性、迭代、演化、并行</p>
+<p>能力成熟度模型集成（CMMI）：用于预测软件开发组织所开发的系统和软件工程能力。</p>
+<h2 id="2-2-瀑布模型"><a href="#2-2-瀑布模型" class="headerlink" title="2.2 瀑布模型"></a>2.2 瀑布模型</h2><p><img src="/personal-blog/2023/02/01/%E8%BD%AF%E5%B7%A5%E5%AF%BC%E8%AE%BA%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/%E7%80%91%E5%B8%83%E6%A8%A1%E5%9E%8B.png" alt="瀑布模型"></p>
+<p>适用范围：</p>
+<ul>
+<li><p>对系统进行<strong>明确定义的适应性调整和增强</strong>的时候</p>
+</li>
+<li><p>对于一个新的项目，<strong>需求必须是准确定义和相对稳定</strong>的</p>
+</li>
+</ul>
+<p>优点：</p>
+<ol>
+<li>容易理解和计划</li>
+<li>适用于充分了解的小型项目</li>
+<li>分析和测试是顺序线性的</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>不能很好地适应变化</li>
+<li>测试在过程的后期进行</li>
+<li>客户确认在最后阶段</li>
+</ol>
+<h2 id="2-3-增量模型"><a href="#2-3-增量模型" class="headerlink" title="2.3 增量模型"></a>2.3 增量模型</h2><p><img src="/personal-blog/2023/02/01/%E8%BD%AF%E5%B7%A5%E5%AF%BC%E8%AE%BA%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/%E5%A2%9E%E9%87%8F%E6%A8%A1%E5%9E%8B.png" alt="增量模型"></p>
+<p>优点：</p>
+<ol>
+<li><strong>将软件模块化</strong>，分批提交，使用户可以及时了解进展。</li>
+<li><strong>降低了软件开发的风险</strong>，一个周期内的错误不会影响整个系统。</li>
+<li><strong>开发顺序灵活</strong>，可以对组件的实现顺序进行优先级排序。</li>
+<li><strong>适应需求变化</strong>。</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>要求软件能进行增量式开发。</li>
+<li>软件过程的控制失去整体性。</li>
+</ol>
+<h2 id="2-4-RAD模型"><a href="#2-4-RAD模型" class="headerlink" title="2.4 RAD模型"></a>2.4 RAD模型</h2><p>RAD：快速应用程序开发，是一种侧重于<strong>短暂的开发周期</strong>的增量软件模型</p>
+<img src="RAD模型.png" alt="RAD模型" style="zoom:75%;" />
+
+<p>适用范围：工期紧张，有可细分功能，还要有合适的构件。</p>
+<p>缺点：</p>
+<ol>
+<li><p>需要投入更多的人力。</p>
+</li>
+<li><p>各团队要紧密协作。</p>
+</li>
+<li><p>只适应于特殊的系统，必须可以合理模块化。</p>
+</li>
+<li><p>不适于高性能需求（若需调构件接口 ）</p>
+</li>
+<li><p>系统需求灵活，现有构件不容易轻易满足。</p>
+</li>
+<li><p>技术风险很高的情况下，不宜采用该模型。</p>
+</li>
+</ol>
+<h2 id="2-5-原型模型"><a href="#2-5-原型模型" class="headerlink" title="2.5 原型模型"></a>2.5 原型模型</h2><img src="原型模型.png" alt="原型模型" style="zoom:75%;" />
+
+<p>适用范围：</p>
+<ol>
+<li><p>客户不能给出确切的要求</p>
+</li>
+<li><p>开发人员对算法的效率、操作系统的兼容性和人机交互的形式不确定</p>
+</li>
+</ol>
+<p>优点：</p>
+<ol>
+<li><p>变更需求对后续设计影响较小</p>
+</li>
+<li><p>客户很早并频繁地参与其中</p>
+</li>
+<li><p>对小型项目来说效果好</p>
+</li>
+<li><p>产品失败的可能性降低</p>
+</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li><p>客户的参与可能造成进度延误</p>
+</li>
+<li><p>“提交”一个原型，可能造成初步完成的假象</p>
+</li>
+<li><p>原型被抛弃导致工作白干了</p>
+</li>
+<li><p>很难计划和管理</p>
+</li>
+</ol>
+<h2 id="2-6-螺旋模型"><a href="#2-6-螺旋模型" class="headerlink" title="2.6 螺旋模型"></a>2.6 螺旋模型</h2><p><img src="/personal-blog/2023/02/01/%E8%BD%AF%E5%B7%A5%E5%AF%BC%E8%AE%BA%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/%E8%9E%BA%E6%97%8B%E6%A8%A1%E5%9E%8B.png" alt="螺旋模型"></p>
+<p>特点：</p>
+<ul>
+<li><p>结合了原型模型的<strong>迭代性质</strong>和瀑布模型的<strong>系统性和可控性</strong></p>
+</li>
+<li><p>风险驱动，引入非常严格的<strong>风险识别、风险分析和风险控制</strong></p>
+</li>
+<li><p>早期迭代中可能是一个理论模型或原型</p>
+</li>
+</ul>
+<p>优点：</p>
+<ol>
+<li><p>有持续不断的客户参与</p>
+</li>
+<li><p>开发风险得到控制</p>
+</li>
+<li><p>适用于大型复杂项目</p>
+</li>
+<li><p>适用于可扩展的产品</p>
+</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li><p><strong>风险分析失败</strong>可能导致项目失败</p>
+</li>
+<li><p>项目可能难于管理</p>
+</li>
+<li><p>需要一个专家开发团队</p>
+</li>
+</ol>
+<h2 id="2-7-统一过程"><a href="#2-7-统一过程" class="headerlink" title="2.7 统一过程"></a>2.7 统一过程</h2><p><img src="/personal-blog/2023/02/01/%E8%BD%AF%E5%B7%A5%E5%AF%BC%E8%AE%BA%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/%E7%BB%9F%E4%B8%80%E8%BF%87%E7%A8%8B.png" alt="统一过程"></p>
+<p>将<strong>传统软件模型</strong>和<strong>敏捷过程模型</strong>的优点统一起来</p>
+<p>包括：起始，细化，构建，转换，生产</p>
+<p>优点：</p>
+<ol>
+<li><p>重视<strong>文档质量</strong></p>
+</li>
+<li><p>有持续不断的<strong>客户参与</strong></p>
+</li>
+<li><p>适合<strong>需求变更</strong>的情况</p>
+</li>
+<li><p>对<strong>维护项目</strong>非常有效</p>
+</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li><p>用例并不总是精确的</p>
+</li>
+<li><p>具有复杂的<strong>软件增量集成</strong></p>
+</li>
+<li><p><strong>阶段的重叠</strong>可能会带来问题</p>
+</li>
+<li><p>需要一个专家开发团队</p>
+</li>
+</ol>
+<h2 id="第3章-敏捷开发"><a href="#第3章-敏捷开发" class="headerlink" title="第3章 敏捷开发"></a>第3章 敏捷开发</h2><h3 id="3-1-敏捷开发宣言"><a href="#3-1-敏捷开发宣言" class="headerlink" title="3.1 敏捷开发宣言"></a>3.1 敏捷开发宣言</h3><p><img src="/personal-blog/2023/02/01/%E8%BD%AF%E5%B7%A5%E5%AF%BC%E8%AE%BA%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91%E5%AE%A3%E8%A8%80.png" alt="敏捷开发宣言"></p>
+<h3 id="3-2-Scrum"><a href="#3-2-Scrum" class="headerlink" title="3.2 Scrum"></a>3.2 Scrum</h3><p>Scrum是一个轻量级的项目管理的框架， 它的核心在于迭代</p>
+<h3 id="3-3-极限编程"><a href="#3-3-极限编程" class="headerlink" title="3.3 极限编程"></a>3.3 极限编程</h3><p><img src="/personal-blog/2023/02/01/%E8%BD%AF%E5%B7%A5%E5%AF%BC%E8%AE%BA%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/%E6%9E%81%E9%99%90%E7%BC%96%E7%A8%8B.png" alt="极限编程"></p>
+<p>策划、设计、编码、测试</p>
+<h3 id="3-4-用户故事"><a href="#3-4-用户故事" class="headerlink" title="3.4 用户故事"></a>3.4 用户故事</h3><p>问题描述：“作为……（谁），我想要……（做什么），为了……（为什么）”。</p>
+<p>假设要开发一个<strong>基金交易系统</strong>，其中一个用户故事是：“当投资者申购基金后，他&#x2F;她将在T+2收到交易确认短信，期间如果遇到周末或假期将顺延”（T是交易日的意思，T+2即两个交易日后）。</p>
+<h2 id="第4章-可行性研究"><a href="#第4章-可行性研究" class="headerlink" title="第4章 可行性研究"></a>第4章 可行性研究</h2><h3 id="4-1-可行性研究的目的"><a href="#4-1-可行性研究的目的" class="headerlink" title="4.1 可行性研究的目的"></a>4.1 可行性研究的目的</h3><p>用<strong>最小的代价</strong>在<strong>尽可能短</strong>的时间内确定<strong>问题是否能够解决</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://linfenggao.github.io/personal-blog/2023/02/01/%E8%BD%AF%E5%B7%A5%E5%AF%BC%E8%AE%BA%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" data-id="cldle5i81000ad4t68y2b7ded" data-title="软工导论期末复习" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/personal-blog/tags/%E8%BD%AF%E5%B7%A5%E5%AF%BC%E8%AE%BA/" rel="tag">软工导论</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/personal-blog/2022/06/07/%E5%86%9B%E4%BA%8B%E7%90%86%E8%AE%BA/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">军事理论复习</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/personal-blog/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/personal-blog/tags/%E5%86%9B%E4%BA%8B%E7%90%86%E8%AE%BA/" rel="tag">军事理论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/personal-blog/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/personal-blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/personal-blog/tags/%E8%BD%AF%E5%B7%A5%E5%AF%BC%E8%AE%BA/" rel="tag">软工导论</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/personal-blog/tags/Java/" style="font-size: 10px;">Java</a> <a href="/personal-blog/tags/%E5%86%9B%E4%BA%8B%E7%90%86%E8%AE%BA/" style="font-size: 10px;">军事理论</a> <a href="/personal-blog/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/personal-blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">计算机网络</a> <a href="/personal-blog/tags/%E8%BD%AF%E5%B7%A5%E5%AF%BC%E8%AE%BA/" style="font-size: 10px;">软工导论</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/personal-blog/archives/2023/02/">二月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/personal-blog/archives/2022/06/">六月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/personal-blog/archives/2022/05/">五月 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/personal-blog/2023/02/01/%E8%BD%AF%E5%B7%A5%E5%AF%BC%E8%AE%BA%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">软工导论期末复习</a>
+          </li>
+        
+          <li>
+            <a href="/personal-blog/2022/06/07/%E5%86%9B%E4%BA%8B%E7%90%86%E8%AE%BA/">军事理论复习</a>
+          </li>
+        
+          <li>
+            <a href="/personal-blog/2022/05/29/Number%E7%B1%BB%E8%AF%A6%E8%A7%A3/">Number类详解</a>
+          </li>
+        
+          <li>
+            <a href="/personal-blog/2022/05/28/TCP%E5%92%8CUDP/">TCP和UDP</a>
+          </li>
+        
+          <li>
+            <a href="/personal-blog/2022/05/28/sql/">数据库系统概论第3章部分例题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 Linfeng<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/personal-blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/personal-blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/personal-blog/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/personal-blog/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/personal-blog/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
