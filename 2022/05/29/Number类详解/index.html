@@ -4,29 +4,29 @@
   <meta charset="utf-8">
   
   
-  <title>Number类详解 | ZhouzhouBlog</title>
+  <title>Number类详解 | 高琳峰的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Number类Number类是一个抽象类，定义了4个抽象方法：  intValue()：获取整型数值 longValue()：获取长整型数值 floatValue()：获取单精度浮点型数值 doubleValue()：获取双精度浮点型数值  除此之外还有两个具体方法：  byteValue()：返回此Number对象字节类型的值（通过强制转换） shortValue()：返回此 Number 对象">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Number类详解">
-<meta property="og:url" content="https://linfenggao.github.io/demo/2022/05/29/Number%E7%B1%BB%E8%AF%A6%E8%A7%A3/index.html">
-<meta property="og:site_name" content="ZhouzhouBlog">
+<meta property="og:url" content="https://linfenggao.github.io/personal-blog/2022/05/29/Number%E7%B1%BB%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:site_name" content="高琳峰的个人博客">
 <meta property="og:description" content="Number类Number类是一个抽象类，定义了4个抽象方法：  intValue()：获取整型数值 longValue()：获取长整型数值 floatValue()：获取单精度浮点型数值 doubleValue()：获取双精度浮点型数值  除此之外还有两个具体方法：  byteValue()：返回此Number对象字节类型的值（通过强制转换） shortValue()：返回此 Number 对象">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://linfenggao.github.io/demo/2022/05/29/Number%E7%B1%BB%E8%AF%A6%E8%A7%A3/Number.png">
-<meta property="og:image" content="https://linfenggao.github.io/demo/2022/05/29/Number%E7%B1%BB%E8%AF%A6%E8%A7%A3/Rational.png">
-<meta property="og:image" content="https://linfenggao.github.io/demo/2022/05/29/Number%E7%B1%BB%E8%AF%A6%E8%A7%A3/Rational_UML.png">
+<meta property="og:image" content="https://linfenggao.github.io/personal-blog/2022/05/29/Number%E7%B1%BB%E8%AF%A6%E8%A7%A3/Number.png">
+<meta property="og:image" content="https://linfenggao.github.io/personal-blog/2022/05/29/Number%E7%B1%BB%E8%AF%A6%E8%A7%A3/Rational.png">
+<meta property="og:image" content="https://linfenggao.github.io/personal-blog/2022/05/29/Number%E7%B1%BB%E8%AF%A6%E8%A7%A3/Rational_UML.png">
 <meta property="article:published_time" content="2022-05-29T03:02:35.000Z">
-<meta property="article:modified_time" content="2022-05-29T03:56:00.440Z">
+<meta property="article:modified_time" content="2022-05-29T03:56:02.000Z">
 <meta property="article:author" content="Linfeng">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://linfenggao.github.io/demo/2022/05/29/Number%E7%B1%BB%E8%AF%A6%E8%A7%A3/Number.png">
+<meta name="twitter:image" content="https://linfenggao.github.io/personal-blog/2022/05/29/Number%E7%B1%BB%E8%AF%A6%E8%A7%A3/Number.png">
   
-    <link rel="alternate" href="/demo/atom.xml" title="ZhouzhouBlog" type="application/atom+xml">
+    <link rel="alternate" href="/personal-blog/atom.xml" title="高琳峰的个人博客" type="application/atom+xml">
   
   
-    <link rel="shortcut icon" href="/demo/favicon.png">
+    <link rel="shortcut icon" href="/personal-blog/favicon.png">
   
   
     
@@ -34,11 +34,11 @@
 
   
   
-<link rel="stylesheet" href="/demo/css/style.css">
+<link rel="stylesheet" href="/personal-blog/css/style.css">
 
   
     
-<link rel="stylesheet" href="/demo/fancybox/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/personal-blog/fancybox/jquery.fancybox.min.css">
 
   
 <meta name="generator" content="Hexo 6.2.0"></head>
@@ -51,7 +51,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/demo/" id="logo">ZhouzhouBlog</a>
+        <a href="/personal-blog/" id="logo">高琳峰的个人博客</a>
       </h1>
       
     </div>
@@ -59,19 +59,19 @@
       <nav id="main-nav">
         <a id="main-nav-toggle" class="nav-icon"></a>
         
-          <a class="main-nav-link" href="/demo/">Home</a>
+          <a class="main-nav-link" href="/personal-blog/">Home</a>
         
-          <a class="main-nav-link" href="/demo/archives">Archives</a>
+          <a class="main-nav-link" href="/personal-blog/archives">Archives</a>
         
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/demo/atom.xml" title="RSS 订阅"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/personal-blog/atom.xml" title="RSS 订阅"></a>
         
         <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://linfenggao.github.io/demo"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://linfenggao.github.io/personal-blog"></form>
       </div>
     </div>
   </div>
@@ -80,7 +80,7 @@
       <div class="outer">
         <section id="main"><article id="post-Number类详解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/demo/2022/05/29/Number%E7%B1%BB%E8%AF%A6%E8%A7%A3/" class="article-date">
+    <a href="/personal-blog/2022/05/29/Number%E7%B1%BB%E8%AF%A6%E8%A7%A3/" class="article-date">
   <time class="dt-published" datetime="2022-05-29T03:02:35.000Z" itemprop="datePublished">2022-05-29</time>
 </a>
     
@@ -117,7 +117,7 @@
 <p><em>serialVersionUID</em> 表示版本号，在<strong>序列化</strong>中才要用到，在此不做说明。</p>
 <p>一般情况下我们会使用数据的基本数据类型：byte、int、short、long、double、float、boolean、char；</p>
 <p>对应的包装类型也有八种：Byte、Integer、Short、Long、Double、Float、Boolean、Character;</p>
-<p>所有<strong>包装类型</strong>都继承了该抽象类：<br><img src="/demo/2022/05/29/Number%E7%B1%BB%E8%AF%A6%E8%A7%A3/Number.png"></p>
+<p>所有<strong>包装类型</strong>都继承了该抽象类：<br><img src="/personal-blog/2022/05/29/Number%E7%B1%BB%E8%AF%A6%E8%A7%A3/Number.png"></p>
 <h3 id="装箱与拆箱"><a href="#装箱与拆箱" class="headerlink" title="装箱与拆箱"></a>装箱与拆箱</h3><ul>
 <li>装箱：内置数据类型-&gt;包装类型</li>
 <li>拆箱：包装类型-&gt;内置数据类型</li>
@@ -145,7 +145,7 @@
 <li>由于有理数与整数、浮点数有许多共同特征，并且Number类是包装类型的根类，因此，把有理数类Rational定义为<strong>Number类的一个子类</strong>是比较合适的。由于有理数是可比较的，那么Rational类也应该<strong>实现Comparable接口</strong>。</li>
 </ul>
 <p>下图中描述了Rational类与Number类和Comparable接口的关系。</p>
-<p><img src="/demo/2022/05/29/Number%E7%B1%BB%E8%AF%A6%E8%A7%A3/Rational.png"><br><img src="/demo/2022/05/29/Number%E7%B1%BB%E8%AF%A6%E8%A7%A3/Rational_UML.png"></p>
+<p><img src="/personal-blog/2022/05/29/Number%E7%B1%BB%E8%AF%A6%E8%A7%A3/Rational.png"><br><img src="/personal-blog/2022/05/29/Number%E7%B1%BB%E8%AF%A6%E8%A7%A3/Rational_UML.png"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.Number;</span><br><span class="line"><span class="keyword">import</span> java.lang.Comparable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Rational</span> <span class="keyword">extends</span> <span class="title class_">Number</span> <span class="keyword">implements</span> <span class="title class_">Comparable</span>&lt;Rational&gt; &#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">long</span> <span class="variable">serialVersionUID</span> <span class="operator">=</span> <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="type">long</span> numerator; <span class="comment">// 分子</span></span><br><span class="line">	<span class="keyword">private</span> <span class="type">long</span> denominator; <span class="comment">// 分母</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 默认构造函数 */</span></span><br><span class="line">	Rational() &#123;</span><br><span class="line">		numerator = <span class="number">0</span>;</span><br><span class="line">		denominator = <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 指定分子分母的构造函数 */</span></span><br><span class="line">	Rational(<span class="type">long</span> numerator, <span class="type">long</span> denominator) <span class="keyword">throws</span> IllegalArgumentException &#123;</span><br><span class="line">		<span class="keyword">if</span> (denominator == <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(<span class="string">&quot;分母不能为0&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">/* 计算最大公约数 */</span></span><br><span class="line">		<span class="type">long</span> <span class="variable">gcd</span> <span class="operator">=</span> gcd(numerator, denominator);</span><br><span class="line">		<span class="comment">/* 约分 */</span></span><br><span class="line">		<span class="built_in">this</span>.numerator = numerator / gcd;</span><br><span class="line">		<span class="built_in">this</span>.denominator = denominator / gcd;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 计算最大公约数 */</span></span><br><span class="line">	<span class="keyword">private</span> <span class="type">long</span> <span class="title function_">gcd</span><span class="params">(<span class="type">long</span> a, <span class="type">long</span> b)</span> &#123;</span><br><span class="line">		<span class="type">long</span> <span class="variable">r</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span> (r != <span class="number">0</span>) &#123;</span><br><span class="line">			r = a % b;</span><br><span class="line">			a = b;</span><br><span class="line">			b = r;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> a;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 加法 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> Rational <span class="title function_">Add</span><span class="params">(Rational a, Rational b)</span> <span class="keyword">throws</span> IllegalArgumentException &#123;</span><br><span class="line"></span><br><span class="line">		<span class="type">long</span> <span class="variable">new_deno</span> <span class="operator">=</span> a.denominator * b.denominator;</span><br><span class="line">		<span class="type">long</span> <span class="variable">new_nume</span> <span class="operator">=</span> a.numerator * b.denominator + b.numerator * a.denominator;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Rational</span>(new_nume, new_deno);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 减法 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> Rational <span class="title function_">Subtract</span><span class="params">(Rational a, Rational b)</span> <span class="keyword">throws</span> IllegalArgumentException &#123;</span><br><span class="line">		<span class="type">long</span> <span class="variable">new_deno</span> <span class="operator">=</span> a.denominator * b.denominator;</span><br><span class="line">		<span class="type">long</span> <span class="variable">new_nume</span> <span class="operator">=</span> a.numerator * b.denominator - b.numerator * a.denominator;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Rational</span>(new_nume, new_deno);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 乘法 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> Rational <span class="title function_">Multiply</span><span class="params">(Rational a, Rational b)</span> <span class="keyword">throws</span> IllegalArgumentException &#123;</span><br><span class="line">		<span class="type">long</span> <span class="variable">new_deno</span> <span class="operator">=</span> a.denominator * b.denominator;</span><br><span class="line">		<span class="type">long</span> <span class="variable">new_nume</span> <span class="operator">=</span> a.numerator * b.numerator;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Rational</span>(new_nume, new_deno);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 除法 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> Rational <span class="title function_">Divide</span><span class="params">(Rational a, Rational b)</span> <span class="keyword">throws</span> IllegalArgumentException &#123;</span><br><span class="line">		<span class="type">long</span> <span class="variable">new_deno</span> <span class="operator">=</span> a.denominator * b.numerator;</span><br><span class="line">		<span class="type">long</span> <span class="variable">new_nume</span> <span class="operator">=</span> a.numerator * b.denominator;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Rational</span>(new_nume, new_deno);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (denominator == <span class="number">1</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> String.format(<span class="string">&quot;%d&quot;</span>, numerator);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> String.format(<span class="string">&quot;%d/%d&quot;</span>, numerator, denominator);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 返回小数形式，precision表示小数点后位数 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">PrintFloat</span><span class="params">(<span class="type">int</span> precision)</span> &#123;</span><br><span class="line">		System.out.printf(<span class="string">&quot;%.&quot;</span> + precision + <span class="string">&quot;f&quot;</span>, (<span class="type">float</span>) numerator / denominator);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> <span class="type">int</span> <span class="title function_">intValue</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> (<span class="type">int</span>) (numerator / denominator);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> <span class="type">long</span> <span class="title function_">longValue</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> numerator / denominator;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> <span class="type">float</span> <span class="title function_">floatValue</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> (<span class="type">float</span>) numerator / denominator;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> <span class="type">double</span> <span class="title function_">doubleValue</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> (<span class="type">double</span>) numerator / denominator;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compareTo</span><span class="params">(Rational o)</span> &#123;</span><br><span class="line">		<span class="type">Double</span> <span class="variable">val1</span> <span class="operator">=</span> <span class="built_in">this</span>.doubleValue();</span><br><span class="line">		<span class="type">Double</span> <span class="variable">val2</span> <span class="operator">=</span> o.doubleValue();</span><br><span class="line">		<span class="keyword">return</span> val1.compareTo(val2);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>测试类Test</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="type">Rational</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Rational</span>(<span class="number">1</span>, -<span class="number">3</span>);</span><br><span class="line">			<span class="type">Rational</span> <span class="variable">b</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Rational</span>(<span class="number">1</span>, -<span class="number">2</span>);</span><br><span class="line">			System.out.println(<span class="string">&quot;a:&quot;</span> + a);</span><br><span class="line">			System.out.println(<span class="string">&quot;b:&quot;</span> + b);</span><br><span class="line">			System.out.print(<span class="string">&quot;a保留3位小数:&quot;</span>);</span><br><span class="line">			a.PrintFloat(<span class="number">3</span>);</span><br><span class="line">			System.out.print(<span class="string">&quot;b保留3位小数:&quot;</span>);</span><br><span class="line">			b.PrintFloat(<span class="number">3</span>);</span><br><span class="line">			System.out.println(<span class="string">&quot;a+b:&quot;</span> + Rational.Add(a, b));</span><br><span class="line">			System.out.println(<span class="string">&quot;a-b:&quot;</span> + Rational.Subtract(a, b));</span><br><span class="line">			System.out.println(<span class="string">&quot;a*b:&quot;</span> + Rational.Multiply(a, b));</span><br><span class="line">			System.out.println(<span class="string">&quot;a/b:&quot;</span> + Rational.Divide(a, b));</span><br><span class="line">			System.out.println(<span class="string">&quot;a.compareTo(b):&quot;</span> + a.compareTo(b));</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -155,11 +155,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://linfenggao.github.io/demo/2022/05/29/Number%E7%B1%BB%E8%AF%A6%E8%A7%A3/" data-id="cl3qpy6md0000cku1fz7b7gsl" data-title="Number类详解" class="article-share-link">分享</a>
+      <a data-url="https://linfenggao.github.io/personal-blog/2022/05/29/Number%E7%B1%BB%E8%AF%A6%E8%A7%A3/" data-id="cldlcp6yy00009kt6ggpjccoq" data-title="Number类详解" class="article-share-link">分享</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/demo/tags/Java/" rel="tag">Java</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/personal-blog/tags/Java/" rel="tag">Java</a></li></ul>
 
     </footer>
   </div>
@@ -167,7 +167,7 @@
     
 <nav id="article-nav">
   
-    <a href="/demo/2022/06/07/%E5%86%9B%E4%BA%8B%E7%90%86%E8%AE%BA/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/personal-blog/2022/06/07/%E5%86%9B%E4%BA%8B%E7%90%86%E8%AE%BA/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前一篇</strong>
       <div class="article-nav-title">
         
@@ -177,7 +177,7 @@
     </a>
   
   
-    <a href="/demo/2022/05/28/TCP%E5%92%8CUDP/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/personal-blog/2022/05/28/TCP%E5%92%8CUDP/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">后一篇</strong>
       <div class="article-nav-title">TCP和UDP</div>
     </a>
@@ -199,7 +199,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/demo/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/demo/tags/%E5%86%9B%E4%BA%8B%E7%90%86%E8%AE%BA/" rel="tag">军事理论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/demo/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/demo/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/personal-blog/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/personal-blog/tags/%E5%86%9B%E4%BA%8B%E7%90%86%E8%AE%BA/" rel="tag">军事理论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/personal-blog/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/personal-blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
     </div>
   </div>
 
@@ -209,7 +209,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/demo/tags/Java/" style="font-size: 10px;">Java</a> <a href="/demo/tags/%E5%86%9B%E4%BA%8B%E7%90%86%E8%AE%BA/" style="font-size: 10px;">军事理论</a> <a href="/demo/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/demo/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">计算机网络</a>
+      <a href="/personal-blog/tags/Java/" style="font-size: 10px;">Java</a> <a href="/personal-blog/tags/%E5%86%9B%E4%BA%8B%E7%90%86%E8%AE%BA/" style="font-size: 10px;">军事理论</a> <a href="/personal-blog/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/personal-blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">计算机网络</a>
     </div>
   </div>
 
@@ -218,7 +218,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/demo/archives/2022/06/">六月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/demo/archives/2022/05/">五月 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/personal-blog/archives/2023/02/">二月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/personal-blog/archives/2022/06/">六月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/personal-blog/archives/2022/05/">五月 2022</a></li></ul>
     </div>
   </div>
 
@@ -231,23 +231,23 @@
       <ul>
         
           <li>
-            <a href="/demo/2022/06/07/%E5%86%9B%E4%BA%8B%E7%90%86%E8%AE%BA/">军事理论复习</a>
+            <a href="/personal-blog/2023/02/01/hello-world/">Hello World</a>
           </li>
         
           <li>
-            <a href="/demo/2022/05/29/Number%E7%B1%BB%E8%AF%A6%E8%A7%A3/">Number类详解</a>
+            <a href="/personal-blog/2022/06/07/%E5%86%9B%E4%BA%8B%E7%90%86%E8%AE%BA/">军事理论复习</a>
           </li>
         
           <li>
-            <a href="/demo/2022/05/28/TCP%E5%92%8CUDP/">TCP和UDP</a>
+            <a href="/personal-blog/2022/05/29/Number%E7%B1%BB%E8%AF%A6%E8%A7%A3/">Number类详解</a>
           </li>
         
           <li>
-            <a href="/demo/2022/05/28/sql/">数据库系统概论第3章部分例题</a>
+            <a href="/personal-blog/2022/05/28/TCP%E5%92%8CUDP/">TCP和UDP</a>
           </li>
         
           <li>
-            <a href="/demo/2022/05/28/hello-world/">Hello World</a>
+            <a href="/personal-blog/2022/05/28/sql/">数据库系统概论第3章部分例题</a>
           </li>
         
       </ul>
@@ -263,7 +263,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       
-      &copy; 2022 Linfeng<br>
+      &copy; 2023 Linfeng<br>
       Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
@@ -272,25 +272,25 @@
     </div>
     <nav id="mobile-nav">
   
-    <a href="/demo/" class="mobile-nav-link">Home</a>
+    <a href="/personal-blog/" class="mobile-nav-link">Home</a>
   
-    <a href="/demo/archives" class="mobile-nav-link">Archives</a>
+    <a href="/personal-blog/archives" class="mobile-nav-link">Archives</a>
   
 </nav>
     
 
 
-<script src="/demo/js/jquery-3.4.1.min.js"></script>
+<script src="/personal-blog/js/jquery-3.4.1.min.js"></script>
 
 
 
   
-<script src="/demo/fancybox/jquery.fancybox.min.js"></script>
+<script src="/personal-blog/fancybox/jquery.fancybox.min.js"></script>
 
 
 
 
-<script src="/demo/js/script.js"></script>
+<script src="/personal-blog/js/script.js"></script>
 
 
 

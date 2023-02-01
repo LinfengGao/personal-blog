@@ -4,31 +4,31 @@
   <meta charset="utf-8">
   
   
-  <title>TCP和UDP | ZhouzhouBlog</title>
+  <title>TCP和UDP | 高琳峰的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="TCP数据报格式  确认ACK：占1位，仅当ACK&#x3D;1时，确认号字段才有效。ACK&#x3D;0时，确认号无效 同步SYN：连接建立时用于同步序号。 当SYN&#x3D;1，ACK&#x3D;0时表示：这是一个连接请求报文段。 若同意连接，则在响应报文段中使得SYN&#x3D;1，ACK&#x3D;1。 因此，SYN&#x3D;1表示这是一个连接请求，或连接接受报文。SYN这个标志位只有">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TCP和UDP">
-<meta property="og:url" content="https://linfenggao.github.io/demo/2022/05/28/TCP%E5%92%8CUDP/index.html">
-<meta property="og:site_name" content="ZhouzhouBlog">
+<meta property="og:url" content="https://linfenggao.github.io/personal-blog/2022/05/28/TCP%E5%92%8CUDP/index.html">
+<meta property="og:site_name" content="高琳峰的个人博客">
 <meta property="og:description" content="TCP数据报格式  确认ACK：占1位，仅当ACK&#x3D;1时，确认号字段才有效。ACK&#x3D;0时，确认号无效 同步SYN：连接建立时用于同步序号。 当SYN&#x3D;1，ACK&#x3D;0时表示：这是一个连接请求报文段。 若同意连接，则在响应报文段中使得SYN&#x3D;1，ACK&#x3D;1。 因此，SYN&#x3D;1表示这是一个连接请求，或连接接受报文。SYN这个标志位只有">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://linfenggao.github.io/demo/2022/05/28/TCP%E5%92%8CUDP/TCP%E6%95%B0%E6%8D%AE%E6%8A%A5%E6%A0%BC%E5%BC%8F.png">
-<meta property="og:image" content="https://linfenggao.github.io/demo/2022/05/28/TCP%E5%92%8CUDP/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png">
-<meta property="og:image" content="https://linfenggao.github.io/demo/2022/05/28/TCP%E5%92%8CUDP/TCP%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png">
-<meta property="og:image" content="https://linfenggao.github.io/demo/2022/05/28/TCP%E5%92%8CUDP/TCP%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8C%E5%AE%A2%E6%88%B7%E7%AB%AF.png">
-<meta property="og:image" content="https://linfenggao.github.io/demo/2022/05/28/TCP%E5%92%8CUDP/UDP%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8C%E5%AE%A2%E6%88%B7%E7%AB%AF.png">
+<meta property="og:image" content="https://linfenggao.github.io/personal-blog/2022/05/28/TCP%E5%92%8CUDP/TCP%E6%95%B0%E6%8D%AE%E6%8A%A5%E6%A0%BC%E5%BC%8F.png">
+<meta property="og:image" content="https://linfenggao.github.io/personal-blog/2022/05/28/TCP%E5%92%8CUDP/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png">
+<meta property="og:image" content="https://linfenggao.github.io/personal-blog/2022/05/28/TCP%E5%92%8CUDP/TCP%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png">
+<meta property="og:image" content="https://linfenggao.github.io/personal-blog/2022/05/28/TCP%E5%92%8CUDP/TCP%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8C%E5%AE%A2%E6%88%B7%E7%AB%AF.png">
+<meta property="og:image" content="https://linfenggao.github.io/personal-blog/2022/05/28/TCP%E5%92%8CUDP/UDP%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8C%E5%AE%A2%E6%88%B7%E7%AB%AF.png">
 <meta property="article:published_time" content="2022-05-28T06:12:22.000Z">
-<meta property="article:modified_time" content="2022-05-29T03:49:08.397Z">
+<meta property="article:modified_time" content="2022-05-29T03:49:10.000Z">
 <meta property="article:author" content="Linfeng">
 <meta property="article:tag" content="计算机网络">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://linfenggao.github.io/demo/2022/05/28/TCP%E5%92%8CUDP/TCP%E6%95%B0%E6%8D%AE%E6%8A%A5%E6%A0%BC%E5%BC%8F.png">
+<meta name="twitter:image" content="https://linfenggao.github.io/personal-blog/2022/05/28/TCP%E5%92%8CUDP/TCP%E6%95%B0%E6%8D%AE%E6%8A%A5%E6%A0%BC%E5%BC%8F.png">
   
-    <link rel="alternate" href="/demo/atom.xml" title="ZhouzhouBlog" type="application/atom+xml">
+    <link rel="alternate" href="/personal-blog/atom.xml" title="高琳峰的个人博客" type="application/atom+xml">
   
   
-    <link rel="shortcut icon" href="/demo/favicon.png">
+    <link rel="shortcut icon" href="/personal-blog/favicon.png">
   
   
     
@@ -36,11 +36,11 @@
 
   
   
-<link rel="stylesheet" href="/demo/css/style.css">
+<link rel="stylesheet" href="/personal-blog/css/style.css">
 
   
     
-<link rel="stylesheet" href="/demo/fancybox/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/personal-blog/fancybox/jquery.fancybox.min.css">
 
   
 <meta name="generator" content="Hexo 6.2.0"></head>
@@ -53,7 +53,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/demo/" id="logo">ZhouzhouBlog</a>
+        <a href="/personal-blog/" id="logo">高琳峰的个人博客</a>
       </h1>
       
     </div>
@@ -61,19 +61,19 @@
       <nav id="main-nav">
         <a id="main-nav-toggle" class="nav-icon"></a>
         
-          <a class="main-nav-link" href="/demo/">Home</a>
+          <a class="main-nav-link" href="/personal-blog/">Home</a>
         
-          <a class="main-nav-link" href="/demo/archives">Archives</a>
+          <a class="main-nav-link" href="/personal-blog/archives">Archives</a>
         
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/demo/atom.xml" title="RSS 订阅"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/personal-blog/atom.xml" title="RSS 订阅"></a>
         
         <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://linfenggao.github.io/demo"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://linfenggao.github.io/personal-blog"></form>
       </div>
     </div>
   </div>
@@ -82,7 +82,7 @@
       <div class="outer">
         <section id="main"><article id="post-TCP和UDP" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/demo/2022/05/28/TCP%E5%92%8CUDP/" class="article-date">
+    <a href="/personal-blog/2022/05/28/TCP%E5%92%8CUDP/" class="article-date">
   <time class="dt-published" datetime="2022-05-28T06:12:22.000Z" itemprop="datePublished">2022-05-28</time>
 </a>
     
@@ -102,7 +102,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="TCP数据报格式"><a href="#TCP数据报格式" class="headerlink" title="TCP数据报格式"></a>TCP数据报格式</h2><p><img src="/demo/2022/05/28/TCP%E5%92%8CUDP/TCP%E6%95%B0%E6%8D%AE%E6%8A%A5%E6%A0%BC%E5%BC%8F.png" alt="TCP数据报格式"></p>
+        <h2 id="TCP数据报格式"><a href="#TCP数据报格式" class="headerlink" title="TCP数据报格式"></a>TCP数据报格式</h2><p><img src="/personal-blog/2022/05/28/TCP%E5%92%8CUDP/TCP%E6%95%B0%E6%8D%AE%E6%8A%A5%E6%A0%BC%E5%BC%8F.png" alt="TCP数据报格式"></p>
 <ul>
 <li>确认ACK：占1位，仅<strong>当ACK&#x3D;1时，确认号字段才有效</strong>。ACK&#x3D;0时，确认号无效</li>
 <li>同步SYN：连接建立时用于同步序号。</li>
@@ -117,19 +117,19 @@
 <li>UDP程序结构较简单 </li>
 <li><strong>流模式（TCP）与数据报模式(UDP)</strong></li>
 <li>TCP保证数据正确性、数据顺序，UDP可能丢包 </li>
-<li>TCP三次握手四次挥手，UDP无<br>  <img src="/demo/2022/05/28/TCP%E5%92%8CUDP/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png" alt="TCP三次握手"><br>  （C：我想要数据！S：好的我准备发啦！准备好哦。C：好的谢谢哥哥我准备好啦！）<br>  <img src="/demo/2022/05/28/TCP%E5%92%8CUDP/TCP%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png" alt="TCP四次挥手"></li>
+<li>TCP三次握手四次挥手，UDP无<br>  <img src="/personal-blog/2022/05/28/TCP%E5%92%8CUDP/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png" alt="TCP三次握手"><br>  （C：我想要数据！S：好的我准备发啦！准备好哦。C：好的谢谢哥哥我准备好啦！）<br>  <img src="/personal-blog/2022/05/28/TCP%E5%92%8CUDP/TCP%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png" alt="TCP四次挥手"></li>
 <li><strong>UDP没有拥塞控制</strong>，因此网络出现拥塞不会使源主机的发送速率降低</li>
 <li>每一条TCP连接只能是点到点的;UDP<strong>支持一对一，一对多，多对一和多对多的交互通信</strong></li>
 </ol>
 <h2 id="具体编程时的区别"><a href="#具体编程时的区别" class="headerlink" title="具体编程时的区别"></a>具体编程时的区别</h2><p>  1.socket()的参数不同:TCP:SOCK_STREAM;UDP:SOCK_DGRAM<br>  2.UDP Server不需要调用listen和accept<br>  3.UDP收发数据用sendto&#x2F;recvfrom函数<br>  4.TCP：地址信息在connect&#x2F;accept时确定<br>  5.UDP：在sendto&#x2F;recvfrom函数中每次均 需指定地址信息<br>  6.UDP：shutdown函数无效</p>
-<p><img src="/demo/2022/05/28/TCP%E5%92%8CUDP/TCP%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8C%E5%AE%A2%E6%88%B7%E7%AB%AF.png" alt="TCP服务器和客户端"></p>
+<p><img src="/personal-blog/2022/05/28/TCP%E5%92%8CUDP/TCP%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8C%E5%AE%A2%E6%88%B7%E7%AB%AF.png" alt="TCP服务器和客户端"></p>
 <ul>
 <li><p>TCP编程的服务器端一般步骤是：<br>　　1、创建一个socket，用函数socket()；<br>  　2、设置socket属性，用函数setsockopt();  可选<br>  　3、绑定IP地址、端口等信息到socket上，用函数bind();<br>  　4、开启监听，用函数listen()；<br>  　5、接收客户端上来的连接，用函数accept()；<br>  　6、收发数据，用函数send()和recv()，或者read()和write();<br>  　7、关闭网络连接；<br>  　8、关闭监听； </p>
 </li>
 <li><p>TCP编程的客户端一般步骤是：<br>　　1、创建一个socket，用函数socket()；<br>  　2、设置socket属性，用函数setsockopt();可选<br>  　3、绑定IP地址、端口等信息到socket上，用函数bind();可选<br>  　4、设置要连接的对方的IP地址和端口等属性；<br>  　5、连接服务器，用函数connect()；<br>  　6、收发数据，用函数send()和recv()，或者read()和write();<br>  　7、关闭网络连接；</p>
 </li>
 </ul>
-<p><img src="/demo/2022/05/28/TCP%E5%92%8CUDP/UDP%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8C%E5%AE%A2%E6%88%B7%E7%AB%AF.png" alt="UDP服务器和客户端"></p>
+<p><img src="/personal-blog/2022/05/28/TCP%E5%92%8CUDP/UDP%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8C%E5%AE%A2%E6%88%B7%E7%AB%AF.png" alt="UDP服务器和客户端"></p>
 <ul>
 <li><p>UDP编程的服务器端一般步骤是：<br>　　1、创建一个socket，用函数socket()；<br>  　　2、设置socket属性，用函数setsockopt();可选<br>  　　3、绑定IP地址、端口等信息到socket上，用函数bind();<br>  　　4、循环接收数据，用函数recvfrom();<br>  　　5、关闭网络连接； </p>
 </li>
@@ -140,11 +140,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://linfenggao.github.io/demo/2022/05/28/TCP%E5%92%8CUDP/" data-id="cl3phe7ny0000gwu11ytwgbmv" data-title="TCP和UDP" class="article-share-link">分享</a>
+      <a data-url="https://linfenggao.github.io/personal-blog/2022/05/28/TCP%E5%92%8CUDP/" data-id="cldlcp6z500039kt6ea109cue" data-title="TCP和UDP" class="article-share-link">分享</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/demo/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/personal-blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
 
     </footer>
   </div>
@@ -152,7 +152,7 @@
     
 <nav id="article-nav">
   
-    <a href="/demo/2022/05/29/Number%E7%B1%BB%E8%AF%A6%E8%A7%A3/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/personal-blog/2022/05/29/Number%E7%B1%BB%E8%AF%A6%E8%A7%A3/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前一篇</strong>
       <div class="article-nav-title">
         
@@ -162,7 +162,7 @@
     </a>
   
   
-    <a href="/demo/2022/05/28/sql/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/personal-blog/2022/05/28/sql/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">后一篇</strong>
       <div class="article-nav-title">数据库系统概论第3章部分例题</div>
     </a>
@@ -184,7 +184,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/demo/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/demo/tags/%E5%86%9B%E4%BA%8B%E7%90%86%E8%AE%BA/" rel="tag">军事理论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/demo/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/demo/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/personal-blog/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/personal-blog/tags/%E5%86%9B%E4%BA%8B%E7%90%86%E8%AE%BA/" rel="tag">军事理论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/personal-blog/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/personal-blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
     </div>
   </div>
 
@@ -194,7 +194,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/demo/tags/Java/" style="font-size: 10px;">Java</a> <a href="/demo/tags/%E5%86%9B%E4%BA%8B%E7%90%86%E8%AE%BA/" style="font-size: 10px;">军事理论</a> <a href="/demo/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/demo/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">计算机网络</a>
+      <a href="/personal-blog/tags/Java/" style="font-size: 10px;">Java</a> <a href="/personal-blog/tags/%E5%86%9B%E4%BA%8B%E7%90%86%E8%AE%BA/" style="font-size: 10px;">军事理论</a> <a href="/personal-blog/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/personal-blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">计算机网络</a>
     </div>
   </div>
 
@@ -203,7 +203,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/demo/archives/2022/06/">六月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/demo/archives/2022/05/">五月 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/personal-blog/archives/2023/02/">二月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/personal-blog/archives/2022/06/">六月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/personal-blog/archives/2022/05/">五月 2022</a></li></ul>
     </div>
   </div>
 
@@ -216,23 +216,23 @@
       <ul>
         
           <li>
-            <a href="/demo/2022/06/07/%E5%86%9B%E4%BA%8B%E7%90%86%E8%AE%BA/">军事理论复习</a>
+            <a href="/personal-blog/2023/02/01/hello-world/">Hello World</a>
           </li>
         
           <li>
-            <a href="/demo/2022/05/29/Number%E7%B1%BB%E8%AF%A6%E8%A7%A3/">Number类详解</a>
+            <a href="/personal-blog/2022/06/07/%E5%86%9B%E4%BA%8B%E7%90%86%E8%AE%BA/">军事理论复习</a>
           </li>
         
           <li>
-            <a href="/demo/2022/05/28/TCP%E5%92%8CUDP/">TCP和UDP</a>
+            <a href="/personal-blog/2022/05/29/Number%E7%B1%BB%E8%AF%A6%E8%A7%A3/">Number类详解</a>
           </li>
         
           <li>
-            <a href="/demo/2022/05/28/sql/">数据库系统概论第3章部分例题</a>
+            <a href="/personal-blog/2022/05/28/TCP%E5%92%8CUDP/">TCP和UDP</a>
           </li>
         
           <li>
-            <a href="/demo/2022/05/28/hello-world/">Hello World</a>
+            <a href="/personal-blog/2022/05/28/sql/">数据库系统概论第3章部分例题</a>
           </li>
         
       </ul>
@@ -248,7 +248,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       
-      &copy; 2022 Linfeng<br>
+      &copy; 2023 Linfeng<br>
       Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
@@ -257,25 +257,25 @@
     </div>
     <nav id="mobile-nav">
   
-    <a href="/demo/" class="mobile-nav-link">Home</a>
+    <a href="/personal-blog/" class="mobile-nav-link">Home</a>
   
-    <a href="/demo/archives" class="mobile-nav-link">Archives</a>
+    <a href="/personal-blog/archives" class="mobile-nav-link">Archives</a>
   
 </nav>
     
 
 
-<script src="/demo/js/jquery-3.4.1.min.js"></script>
+<script src="/personal-blog/js/jquery-3.4.1.min.js"></script>
 
 
 
   
-<script src="/demo/fancybox/jquery.fancybox.min.js"></script>
+<script src="/personal-blog/fancybox/jquery.fancybox.min.js"></script>
 
 
 
 
-<script src="/demo/js/script.js"></script>
+<script src="/personal-blog/js/script.js"></script>
 
 
 
